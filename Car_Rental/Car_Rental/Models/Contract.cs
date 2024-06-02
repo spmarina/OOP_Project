@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 namespace Car_Rental.Models
 {
-    public class Contract { 
-
+    public class Contract {
+        [Key]
         public int Contracts_ID
         {
             get; set;

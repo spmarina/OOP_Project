@@ -1,83 +1,157 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using Car_Rental.Data;
+using Car_Rental.Models;
 
 namespace Car_Rental.Controllers
 {
     public class AdminController : Controller
     {
-        // GET: AdminController
-        public ActionResult Index()
+        private readonly ApplicationDbContext _context;
+
+        public AdminController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        // GET: Admin
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.Admins.ToListAsync());
+        }
+
+        // GET: Admin/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var admin = await _context.Admins
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (admin == null)
+            {
+                return NotFound();
+            }
+
+            return View(admin);
+        }
+
+        // GET: Admin/Create
+        public IActionResult Create()
         {
             return View();
         }
 
-        // GET: AdminController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: AdminController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: AdminController/Create
+        // POST: Admin/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Create([Bind("Id,CreateLogin,CreatePassword,Sales")] Admin admin)
         {
-            try
+            if (ModelState.IsValid)
             {
+                _context.Add(admin);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+            return View(admin);
         }
 
-        // GET: AdminController/Edit/5
-        public ActionResult Edit(int id)
+        // GET: Admin/Edit/5
+        public async Task<IActionResult> Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var admin = await _context.Admins.FindAsync(id);
+            if (admin == null)
+            {
+                return NotFound();
+            }
+            return View(admin);
         }
 
-        // POST: AdminController/Edit/5
+        // POST: Admin/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,CreateLogin,CreatePassword,Sales")] Admin admin)
         {
-            try
+            if (id != admin.Id)
             {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(admin);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!AdminExists(admin.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+            return View(admin);
         }
 
-        // GET: AdminController/Delete/5
-        public ActionResult Delete(int id)
+        // GET: Admin/Delete/5
+        public async Task<IActionResult> Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var admin = await _context.Admins
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (admin == null)
+            {
+                return NotFound();
+            }
+
+            return View(admin);
         }
 
-        // POST: AdminController/Delete/5
-        [HttpPost]
+        // POST: Admin/Delete/5
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            try
+            var admin = await _context.Admins.FindAsync(id);
+            if (admin != null)
             {
-                return RedirectToAction(nameof(Index));
+                _context.Admins.Remove(admin);
             }
-            catch
-            {
-                return View();
-            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool AdminExists(int id)
+        {
+            return _context.Admins.Any(e => e.Id == id);
         }
     }
 }

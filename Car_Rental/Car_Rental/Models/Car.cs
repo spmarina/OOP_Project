@@ -1,7 +1,10 @@
-﻿namespace Car_Rental.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Car_Rental.Models
 {
     public class Car
     {
+        [Key]
         public int Cars_ID { get; set; }
         public string Brand { get; set; }
         public string Model { get; set; }

@@ -1,9 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Car_Rental.Models
 {
     public class Rent
     {
+        [Key]
         public int Rent_ID { get; set; }
         [ForeignKey("Customer")]
         public int Customers_ID { get; set; }       //Customer

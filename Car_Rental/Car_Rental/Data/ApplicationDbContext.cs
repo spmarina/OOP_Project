@@ -3,11 +3,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Car_Rental.Data
 {
-    public class ApplicationDbContext :DbContext
+    public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions options) : base(options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
+        //public ApplicationDbContext(DbContextOptions options) : base(options)
+        //{
+
+        //}
 
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Car> Cars { get; set; }

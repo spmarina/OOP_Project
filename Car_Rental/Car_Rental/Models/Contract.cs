@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 namespace Car_Rental.Models
 {
-    public class Contract { 
+    public class Contract { 
+
         public int Contracts_ID
         {
             get; set;

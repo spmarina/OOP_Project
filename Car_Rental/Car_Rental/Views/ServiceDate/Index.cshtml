@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Car_Rental.Models.ServiceDate>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cars_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PreviousDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NextDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cars_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PreviousDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NextDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ServiceDate_ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ServiceDate_ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ServiceDate_ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

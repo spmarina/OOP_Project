@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EN4+40SJoycD0uN2rrO8SIJCDvcNnpVKXeIJBoOwlg1m5CXjhGhpK7ghWfNYTe9EmKnQfcz0hi2gxahDIwAQVQ==",
+  "dgSpecHash": "rQX6szW+Cez+Q+W2SsyWdJC8e1hvHFVm3v/RVnAqIsez5Zs19RcM0CylLvrU6g9QmPAPvbXfg8LywVxjIaDg6w==",
   "success": true,
-  "projectFilePath": "D:\\Admin\\Документы\\ВУЗ\\ООП\\Проект\\Car_Rental\\Car_Rental\\Car_Rental.csproj",
+  "projectFilePath": "D:\\Admin\\Документы\\ВУЗ\\ООП\\Проект\\OOP_Project\\Car_Rental\\Car_Rental\\Car_Rental.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Даниил\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Даниил\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

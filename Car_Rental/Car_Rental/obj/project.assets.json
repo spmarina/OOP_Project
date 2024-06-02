@@ -2825,11 +2825,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Admin\\Документы\\ВУЗ\\ООП\\Проект\\Car_Rental\\Car_Rental\\Car_Rental.csproj",
+      "projectUniqueName": "D:\\Admin\\Документы\\ВУЗ\\ООП\\Проект\\OOP_Project\\Car_Rental\\Car_Rental\\Car_Rental.csproj",
       "projectName": "Car_Rental",
-      "projectPath": "D:\\Admin\\Документы\\ВУЗ\\ООП\\Проект\\Car_Rental\\Car_Rental\\Car_Rental.csproj",
+      "projectPath": "D:\\Admin\\Документы\\ВУЗ\\ООП\\Проект\\OOP_Project\\Car_Rental\\Car_Rental\\Car_Rental.csproj",
       "packagesPath": "C:\\Users\\Даниил\\.nuget\\packages\\",
-      "outputPath": "D:\\Admin\\Документы\\ВУЗ\\ООП\\Проект\\Car_Rental\\Car_Rental\\obj\\",
+      "outputPath": "D:\\Admin\\Документы\\ВУЗ\\ООП\\Проект\\OOP_Project\\Car_Rental\\Car_Rental\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

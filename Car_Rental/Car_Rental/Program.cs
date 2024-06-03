@@ -1,4 +1,3 @@
-
 using Car_Rental.Data;
 using Microsoft.EntityFrameworkCore;
 

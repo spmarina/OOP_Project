@@ -44,25 +44,15 @@
 <body>
     <div class="container">
         <h2>Выберите функцию</h2>
-        <a href="#users" class="option">База данных пользователей</a>
-        <a href="#cars" class="option">База данных автомобилей</a>
-        <a href="#rentals" class="option">База данных аренд</a>
-        <a href="#discounts" class="option">База данных скидок</a>
-        <a href="#service" class="option">База данных о сервисном обслуживании</a>
-        <a href="#loyalty-discounts" class="option">База данных дисконтных скидок</a>
-        <a href="#contacts" class="option">Контакты</a>
+        <a href="@Url.Action("Index", "Customers")" class="option">База данных пользователей</a>
+        <a href="@Url.Action("Index", "Car")" class="option">База данных автомобилей</a>
+        <a href="@Url.Action("Index", "Rent")" class="option">База данных аренд</a>
+        <a href="@Url.Action("Index", "Discount")" class="option">База данных скидок</a>
+        <a href="@Url.Action("Index", "ServiceDate")" class="option">База данных о сервисном обслуживании</a>
+        <a href="@Url.Action("Index", "Card")" class="option">База данных дисконтных карт</a>
+        <a href="@Url.Action("Index", "Contract")" class="option">База данных контрактов</a>
     </div>
 
-    <script>
-        // Здесь можно добавить логику для перехода по ссылкам или открытия соответствующих разделов
-        document.querySelectorAll('.option').forEach(option => {
-            option.addEventListener('click', function (event) {
-                event.preventDefault();
-                alert(`Вы выбрали: ${this.textContent}`);
-                // Здесь можно добавить логику для перехода на соответствующую страницу или раздел
-                // Например, window.location.href = 'user_database.html';
-            });
-        });
-    </script>
+    
 </body>
 </html>

@@ -6,9 +6,13 @@ namespace Car_Rental.Controllers
     public class MenuController : Controller
     {
         // GET: MenuController
-        public ActionResult Customers()
+        public ActionResult Index()
         {
             return View();
+        }
+        public ActionResult Customers()
+        {
+          return View();
         }
 
         // GET: MenuController/Details/5

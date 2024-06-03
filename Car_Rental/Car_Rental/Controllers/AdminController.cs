@@ -10,6 +10,10 @@ namespace Car_Rental.Controllers
     {
         private readonly ApplicationDbContext _context;
 
+        public IActionResult Index()
+        {
+            return View();
+        }
         public AdminController(ApplicationDbContext context)
         {
             _context = context;

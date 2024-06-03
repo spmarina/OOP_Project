@@ -22,7 +22,7 @@ namespace Car_Rental.Controllers
         // GET: Cars
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Cars.ToListAsync());
+            return View();
         }
 
         // GET: Cars/Details/5

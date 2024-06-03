@@ -69,7 +69,7 @@
                 <h2>Авторизация</h2>
                 <input type="email" id="login-email" placeholder="Email" required>
                 <input type="password" id="login-password" placeholder="Пароль" required>
-                <button type="button" onclick="login()">Войти</button>
+                <button type="button" onclick="window.location.href='@Url.Action("Index", "Menu")'">Войти</button>
                 <div class="toggle-link" onclick="toggleForm()">Нет аккаунта? Зарегистрируйтесь</div>
             </div>
             <!-- Форма регистрации -->
@@ -100,6 +100,7 @@
             const email = document.getElementById('login-email').value;
             const password = document.getElementById('login-password').value;
             // Добавьте сюда логику авторизации
+            window.location.href = '/Views/Car/Index.cshtml';
             console.log(`Вход: ${email}, ${password}`);
         }
 

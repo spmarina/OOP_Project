@@ -1,0 +1,33 @@
+﻿@model Car_Rental.Models.Admin
+
+@{
+    ViewData["Title"] = "Регистрация";
+}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        /* Ваши стили */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="auth-container">
+            <div id="register-form" class="form">
+                <h2>Регистрация</h2>
+                <form asp-action="Register" method="post">
+                    <input asp-for="Username" placeholder="Имя пользователя" required>
+                    <input asp-for="Email" placeholder="Email" required>
+                    <input asp-for="Password" type="password" placeholder="Пароль" required>
+                    <button type="submit">Зарегистрироваться</button>
+                </form>
+                <div class="toggle-link" onclick="window.location.href='/Account/Login'">Уже есть аккаунт? Войдите</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

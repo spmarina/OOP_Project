@@ -96,20 +96,57 @@
             }
         }
 
-        function login() {
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
-            // Добавьте сюда логику авторизации
-            console.log(`Вход: ${email}, ${password}`);
-        }
+            function login() {
+                const login = document.getElementById('login-email').value;
+                const password = document.getElementById('login-password').value;
+
+                fetch('/Account/Login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+                })
+                    .then(response => {
+                        if (response.redirected) {
+                            window.location.href = response.url;
+                        } else {
+                            return response.text();
+                        }
+                    })
+                    .then(data => {
+                        console.log(data);
+                        // Обработка ошибок
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
 
         function register() {
             const username = document.getElementById('register-username').value;
-            const email = document.getElementById('register-email').value;
+            const login = document.getElementById('register-email').value;
             const password = document.getElementById('register-password').value;
-            // Добавьте сюда логику регистрации
-            console.log(`Регистрация: ${username}, ${email}, ${password}`);
+
+            fetch('/Account/Register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ Username: username, Login: login, Password: password })
+            })
+                .then(response => {
+                    if (response.redirected) {
+                        window.location.href = response.url;
+                    } else {
+                        return response.text();
+                    }
+                })
+                .then(data => {
+                    console.log(data);
+                    // Обработка ошибок
+                })
+                .catch(error => console.error('Error:', error));
         }
+    
     </script>
 </body>
 </html>

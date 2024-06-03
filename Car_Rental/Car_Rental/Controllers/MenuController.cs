@@ -10,19 +10,35 @@ namespace Car_Rental.Controllers
         {
             return View();
         }
+        public ActionResult Customers()
+        {
+          return View();
+        }
 
         // GET: MenuController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Car()
         {
             return View();
         }
 
         // GET: MenuController/Create
-        public ActionResult Create()
+        public ActionResult Rent()
         {
             return View();
         }
 
+        public ActionResult Discount()
+        {
+            return View();
+        }
+        public ActionResult ServiceDate()
+        {
+            return View();
+        }
+        public ActionResult Contract()
+        {
+            return View();
+        }
         // POST: MenuController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]

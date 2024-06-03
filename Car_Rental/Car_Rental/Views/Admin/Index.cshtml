@@ -39,14 +39,14 @@
                 padding: 10px;
                 border: none;
                 border-radius: 3px;
-                background-color: #5cb85c;
+                background-color: #007bff;
                 color: white;
                 font-size: 16px;
                 cursor: pointer;
             }
 
                 .form button:hover {
-                    background-color: #4cae4c;
+                    background-color: #0056b3;
                 }
 
         .toggle-link {
@@ -69,7 +69,7 @@
                 <h2>Авторизация</h2>
                 <input type="email" id="login-email" placeholder="Email" required>
                 <input type="password" id="login-password" placeholder="Пароль" required>
-                <button type="button" onclick="window.location.href='@Url.Action("Index", "Menu")'">Войти</button>
+                <button type="button" onclick="window.location.href='@Url.Action("Login","Admin")'">Войти</button>
                 <div class="toggle-link" onclick="toggleForm()">Нет аккаунта? Зарегистрируйтесь</div>
             </div>
             <!-- Форма регистрации -->
@@ -78,7 +78,7 @@
                 <input type="text" id="register-username" placeholder="Имя пользователя" required>
                 <input type="email" id="register-email" placeholder="Email" required>
                 <input type="password" id="register-password" placeholder="Пароль" required>
-                <button type="button" onclick="register()">Зарегистрироваться</button>
+                <button type="button" onclick="window.location.href='@Url.Action("Register", "Admin")'">Зарегистрироваться</button>
                 <div class="toggle-link" onclick="toggleForm()">Уже есть аккаунт? Войдите</div>
             </div>
         </div>
@@ -100,8 +100,25 @@
             const email = document.getElementById('login-email').value;
             const password = document.getElementById('login-password').value;
             // Добавьте сюда логику авторизации
-            window.location.href = '/Views/Car/Index.cshtml';
+<<<<<<< HEAD
+            
+=======
+            //window.location.href = '/Views/Car/Index.cshtml';
+>>>>>>> 181534acc8d5d9bee18a9edf30ccd069b9985731
             console.log(`Вход: ${email}, ${password}`);
+            
+                // $.ajax({
+                //     url: '@Url.Action("Login", "Admin")',
+                //     type: 'GET',
+                //     data: { String: email, String password },
+                //     success: function (email, password) {
+                //         alert('ID: ' + data.id + '\nEmail: ' + data.email + '\nUsername: ' + data.username);
+                //     },
+                //     error: function () {
+                //         alert('Ошибка при получении данных администратора.');
+                //     }
+                // });
+            
         }
 
         function register() {

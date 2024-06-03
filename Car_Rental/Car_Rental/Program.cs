@@ -1,4 +1,3 @@
-
 using Car_Rental.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -28,5 +27,7 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 app.MapControllers();
-
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Admin}/{action=Index}/{id?}");
 app.Run();

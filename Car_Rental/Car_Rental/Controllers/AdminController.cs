@@ -10,6 +10,10 @@ namespace Car_Rental.Controllers
     {
         private readonly ApplicationDbContext _context;
 
+        public IActionResult Index()
+        {
+            return View();
+        }
         public AdminController(ApplicationDbContext context)
         {
             _context = context;
@@ -18,7 +22,7 @@ namespace Car_Rental.Controllers
         [HttpGet]
         public IActionResult Login()
         {
-            return View();
+            return RedirectToAction("Index", "Menu");
         }
 
         [HttpPost]
@@ -28,7 +32,7 @@ namespace Car_Rental.Controllers
             if (admin != null)
             {
                 // Логика успешной авторизации (например, установка куки)
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Menu");
             }
             else
             {
@@ -38,22 +42,42 @@ namespace Car_Rental.Controllers
             }
         }
 
+        //[HttpPost]
+        //public IActionResult Login(string email, string password)
+        //{
+        //    var admin = _context.Admins.FirstOrDefault(a => a.CreateLogin == email && a.CreatePassword == password); // Assuming you have a Password field
+        //    if (admin == null)
+        //    {
+        //        return Json(new { success = false, message = "Invalid email or password" });
+        //    }
+
+        //    // Add your login logic here (e.g., setting cookies, session variables, etc.)
+
+        //    return Json(new { success = true, message = "Login successful" });
+        //}
+
         [HttpGet]
         public IActionResult Register()
         {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult Register(Admin model)
-        {
             if (ModelState.IsValid)
             {
-                _context.Admins.Add(model);
+                //_context.Admins.Add(model);
                 _context.SaveChanges();
-                return RedirectToAction("Login");
+                return RedirectToAction("Login","Admin");
             }
-            return View(model);
+            return RedirectToAction("Login", "Admin");
         }
+
+        //[HttpPost]
+        //public IActionResult Register(Admin model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _context.Admins.Add(model);
+        //        _context.SaveChanges();
+        //        return RedirectToAction("Login");
+        //    }
+        //    return View(model);
+        //}
     }
 }

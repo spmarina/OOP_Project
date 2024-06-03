@@ -10,6 +10,7 @@ using Car_Rental.Models;
 
 namespace Car_Rental.Controllers
 {
+
     public class AdminController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -22,9 +23,8 @@ namespace Car_Rental.Controllers
         // GET: Admin
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Admins.ToListAsync());
+            return View();
         }
-
         // GET: Admin/Details/5
         public async Task<IActionResult> Details(int? id)
         {

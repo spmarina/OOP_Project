@@ -1,10 +1,123 @@
 ﻿@model IEnumerable<Car_Rental.Models.Admin>
-
-@{
-    Layout = null;
-}
-
 <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация и Регистрация</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+        }
+
+            .form input {
+                margin-bottom: 10px;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+            }
+
+            .form button {
+                padding: 10px;
+                border: none;
+                border-radius: 3px;
+                background-color: #5cb85c;
+                color: white;
+                font-size: 16px;
+                cursor: pointer;
+            }
+
+                .form button:hover {
+                    background-color: #4cae4c;
+                }
+
+        .toggle-link {
+            text-align: center;
+            margin-top: 10px;
+            color: #007bff;
+            cursor: pointer;
+        }
+
+            .toggle-link:hover {
+                text-decoration: underline;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="auth-container">
+            <!-- Форма авторизации -->
+            <div id="login-form" class="form">
+                <h2>Авторизация</h2>
+                <input type="email" id="login-email" placeholder="Email" required>
+                <input type="password" id="login-password" placeholder="Пароль" required>
+                <button type="button" onclick="login()">Войти</button>
+                <div class="toggle-link" onclick="toggleForm()">Нет аккаунта? Зарегистрируйтесь</div>
+            </div>
+            <!-- Форма регистрации -->
+            <div id="register-form" class="form" style="display: none;">
+                <h2>Регистрация</h2>
+                <input type="text" id="register-username" placeholder="Имя пользователя" required>
+                <input type="email" id="register-email" placeholder="Email" required>
+                <input type="password" id="register-password" placeholder="Пароль" required>
+                <button type="button" onclick="register()">Зарегистрироваться</button>
+                <div class="toggle-link" onclick="toggleForm()">Уже есть аккаунт? Войдите</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function toggleForm() {
+            const loginForm = document.getElementById('login-form');
+            const registerForm = document.getElementById('register-form');
+            if (loginForm.style.display === 'none') {
+                loginForm.style.display = 'flex';
+                registerForm.style.display = 'none';
+            } else {
+                loginForm.style.display = 'none';
+                registerForm.style.display = 'flex';
+            }
+        }
+
+        function login() {
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            // Добавьте сюда логику авторизации
+            console.log(`Вход: ${email}, ${password}`);
+        }
+
+        function register() {
+            const username = document.getElementById('register-username').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            // Добавьте сюда логику регистрации
+            console.log(`Регистрация: ${username}, ${email}, ${password}`);
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+@*<!DOCTYPE html>
 
 <html>
 <head>
@@ -30,7 +143,7 @@
             <th></th>
         </tr>
     </thead>
-    <tbody>
+ <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
@@ -50,6 +163,8 @@
         </tr>
 }
     </tbody>
+    
 </table>
 </body>
 </html>
+*@

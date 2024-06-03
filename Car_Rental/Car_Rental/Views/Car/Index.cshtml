@@ -1,131 +1,199 @@
-﻿@model IEnumerable<Car_Rental.Models.Car>
+﻿@{
+    ViewData["Title"] = "Таблица автомобилей";
+}
 
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Выбор функции</title>
+    <title>@ViewData["Title"]</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
             margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
         }
-
         .container {
+            max-width: 800px;
+            margin: 0 auto;
             background-color: white;
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
         }
-
-        .option {
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
             padding: 10px;
-            margin: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f0f0f0;
+        }
+        .search-container, .filter-container {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .search-container input, .filter-container select {
+            padding: 10px;
             border: 1px solid #ccc;
             border-radius: 3px;
-            cursor: pointer;
+            flex: 1;
+            margin-right: 10px;
+            min-width: 100px;
+        }
+        .search-container button, .filter-container button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
             background-color: #007bff;
             color: white;
-            font-size: 18px;
-            text-decoration: none;
-            display: block;
+            cursor: pointer;
+            flex-shrink: 0;
         }
-
-            .option:hover {
-                background-color: #0056b3;
+        .search-container button:hover, .filter-container button:hover {
+            background-color: #0056b3;
+        }
+        @@media (max-width: 600px) {
+            .search-container, .filter-container {
+                flex-direction: column;
             }
+            .search-container input, .filter-container select, 
+            .search-container button, .filter-container button {
+                margin-bottom: 10px;
+                margin-right: 0;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Выберите функцию</h2>
-        <a href="#users" class="option">База данных пользователей</a>
-        <a href="#cars" class="option">База данных автомобилей</a>
-        <a href="#rentals" class="option">База данных аренд</a>
-        <a href="#discounts" class="option">База данных скидок</a>
-        <a href="#service" class="option">База данных о сервисном обслуживании</a>
-        <a href="#loyalty-discounts" class="option">База данных дисконтных скидок</a>
-        <a href="#contacts" class="option">Контакты</a>
+        <h2>@ViewData["Title"]</h2>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Поиск по марке или модели">
+            <button onclick="searchCars()">Поиск</button>
+        </div>
+        <div class="filter-container">
+            <select id="brand-filter">
+                <option value="">Все бренды</option>
+                <!-- Динамически загружаемые опции брендов -->
+            </select>
+            <select id="availability-filter">
+                <option value="">Все</option>
+                <option value="true">Свободна</option>
+                <option value="false">Занята</option>
+            </select>
+            <button onclick="filterCars()">Фильтр</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Бренд</th>
+                    <th>Модель</th>
+                    <th>Цена аренды</th>
+                    <th>Свободна</th>
+                </tr>
+            </thead>
+            <tbody id="cars-table-body">
+                <!-- Данные будут загружены сюда -->
+            </tbody>
+        </table>
     </div>
 
     <script>
-        // Здесь можно добавить логику для перехода по ссылкам или открытия соответствующих разделов
-        document.querySelectorAll('.option').forEach(option => {
-            option.addEventListener('click', function (event) {
-                event.preventDefault();
-                alert(`Вы выбрали: ${this.textContent}`);
-                // Здесь можно добавить логику для перехода на соответствующую страницу или раздел
-                // Например, window.location.href = 'user_database.html';
-            });
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCars();
+            loadBrands();
         });
+
+        function loadCars() {
+            fetch('/api/Car')
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.getElementById('cars-table-body');
+                    tableBody.innerHTML = '';
+                    data.forEach(car => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${car.brand}</td>
+                            <td>${car.model}</td>
+                            <td>${car.rentalPrice}</td>
+                            <td>${car.isAvailable ? 'Да' : 'Нет'}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                });
+        }
+
+        function searchCars() {
+            const query = document.getElementById('search-input').value;
+            fetch(`/api/Car/search?query=${query}`)
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.getElementById('cars-table-body');
+                    tableBody.innerHTML = '';
+                    data.forEach(car => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${car.brand}</td>
+                            <td>${car.model}</td>
+                            <td>${car.rentalPrice}</td>
+                            <td>${car.isAvailable ? 'Да' : 'Нет'}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                });
+        }
+
+        function filterCars() {
+            const brand = document.getElementById('brand-filter').value;
+            const availability = document.getElementById('availability-filter').value;
+            fetch(`/api/Car/filter?brand=${brand}&isAvailable=${availability}`)
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.getElementById('cars-table-body');
+                    tableBody.innerHTML = '';
+                    data.forEach(car => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${car.brand}</td>
+                            <td>${car.model}</td>
+                            <td>${car.rentalPrice}</td>
+                            <td>${car.isAvailable ? 'Да' : 'Нет'}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                });
+        }
+
+        function loadBrands() {
+            fetch('/api/Car/brands')
+                .then(response => response.json())
+                .then(brands => {
+                    const brandFilter = document.getElementById('brand-filter');
+                    brands.forEach(brand => {
+                        const option = document.createElement('option');
+                        option.value = brand;
+                        option.textContent = brand;
+                        brandFilter.appendChild(option);
+                    });
+                });
+        }
     </script>
 </body>
 </html>
-@*
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Brand)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Model)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Availability)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Brand)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Model)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Availability)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Cars_ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Cars_ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Cars_ID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-</body>
-</html>
-*@

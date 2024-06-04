@@ -20,6 +20,7 @@ namespace Car_Rental.Controllers
         }
 
         // GET: Customers
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Customers.ToListAsync());

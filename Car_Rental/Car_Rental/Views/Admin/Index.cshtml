@@ -59,7 +59,10 @@
             .toggle-link:hover {
                 text-decoration: underline;
             }
+
+        
     </style>
+    
 </head>
 <body>
     <div class="container">
@@ -69,7 +72,6 @@
                 <h2>Авторизация</h2>
                 <input type="email" id="login-email" placeholder="Email" required>
                 <input type="password" id="login-password" placeholder="Пароль" required>
-
                 <button type="button" onclick="window.location.href='@Url.Action("Login","Admin")'">Войти</button>
                 <div class="toggle-link" onclick="toggleForm()">Нет аккаунта? Зарегистрируйтесь</div>
             </div>
@@ -97,30 +99,7 @@
             }
         }
 
-        function login() {
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
-
-            // Выполнение AJAX-запроса на сервер для аутентификации
-            $.ajax({
-                url: '@Url.Action("Login", "Admin")',
-                type: 'POST',
-                data: {
-                    email: email,
-                    password: password
-                },
-                success: function (response) {
-                    if (response.redirectToUrl) {
-                        window.location.href = response.redirectToUrl;
-                    } else {
-                        alert(response.errorMessage);
-                    }
-                },
-                error: function () {
-                    alert('Произошла ошибка');
-                }
-            });
-        }
+        
 
         function register() {
             const username = document.getElementById('register-username').value;

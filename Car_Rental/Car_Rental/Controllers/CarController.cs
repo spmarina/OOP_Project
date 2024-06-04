@@ -24,7 +24,7 @@ namespace Car_Rental.Controllers
         // GET: api/Car
         [HttpGet]
         
-        public async Task<ActionResult<IEnumerable<Car>>> GetCars()
+        public async Task<ActionResult<IEnumerable<Car>>> Index()
         {
             return await _context.Cars.ToListAsync();
         }

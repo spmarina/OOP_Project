@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Car_Rental.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240602201343_init entity")]
-    partial class initentity
+    [Migration("20240604195901_init migr")]
+    partial class initmigr
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,11 +27,11 @@ namespace Car_Rental.Migrations
 
             modelBuilder.Entity("Car_Rental.Models.Admin", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("Admins_ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Admins_ID"));
 
                     b.Property<string>("CreateLogin")
                         .IsRequired()
@@ -44,7 +44,7 @@ namespace Car_Rental.Migrations
                     b.Property<int>("Sales")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("Admins_ID");
 
                     b.ToTable("Admins");
                 });

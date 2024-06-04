@@ -32,7 +32,7 @@ go
 --go
 
 
---create table Rent
+--create table Rents
 --(
 --	Rent_ID int Primary key identity,
 --	Customers_ID int foreign key references Customers(Customers_ID),
@@ -103,7 +103,6 @@ go
 
 ALTER TABLE Contracts
 ADD DocumentLink NVARCHAR(max) not null;
-
 go
 
 INSERT INTO Cars 
@@ -117,17 +116,17 @@ go
 
 INSERT INTO Customers 
 VALUES
-('Иванов', 'Егор', 'Андреевич', +79173451789, 1),
-('Емельянова', 'Дарья', 'Данииловна', +79176661320, 1),
-('Столярова', 'Юлия', 'Владимировна', +79654569302, 0)
+('Ivanov', 'Egor', 'Andreevich', +79173451789, 1),
+('Emelyanova', 'Darya', 'Daniilovna', +79176661320, 1),
+('Stolyarova', 'Yliya', 'Vladimirovna', +79654569302, 0)
 
 go
 
 
-INSERT INTO Rent 
+INSERT INTO Rents 
 VALUES
 (1, 3, 29/05/2024, 01/06/2024),
-(2, 1, 01/06/2024, 15/06/2024)
+(2, 1, 01/06/2024, 03/06/2024)
 
 go
 
@@ -194,3 +193,13 @@ go
 
 SELECT * FROM Contracts
 go
+
+--delete Admins
+--delete Cards
+--delete Cars
+--delete Contracts
+--delete Customers
+--delete Discounts
+--delete Rents
+--delete ServicesDates
+--go

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Car_Rental.Migrations
 {
     /// <inheritdoc />
-    public partial class initentity : Migration
+    public partial class initmigr : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,7 +15,7 @@ namespace Car_Rental.Migrations
                 name: "Admins",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    Admins_ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CreateLogin = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatePassword = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -23,7 +23,7 @@ namespace Car_Rental.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Admins", x => x.Id);
+                    table.PrimaryKey("PK_Admins", x => x.Admins_ID);
                 });
 
             migrationBuilder.CreateTable(

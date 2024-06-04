@@ -9,6 +9,9 @@ using Microsoft.CodeAnalysis.Scripting;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
+using Car_Rental.DtoModels.Login;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 
 namespace Car_Rental.Controllers
 {
@@ -49,40 +52,51 @@ namespace Car_Rental.Controllers
             return RedirectToAction("Login");
         }
 
-        [HttpGet]
+        [HttpGet(nameof(Login), Name = nameof(Login))]
         public IActionResult Login()
         {
             return RedirectToAction("Index", "Menu");
+            //return RedirectToAction("Login", "Admin");
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Login(string email, string password)
+        [HttpPost(nameof(LoginPost), Name = nameof(LoginPost))]
+        public async Task<IActionResult> LoginPost(LoginModel LogMod)
         {
-            //var user = _context.Admins.FirstOrDefault(u => u.CreateLogin == email);
-            var user = new Admin()
+
+            //{
+            //    if (user != null && BCrypt.Net.BCrypt.Verify(password, user.CreatePassword))
+            //    {
+            //        // Успешная аутентификация
+            //        // Установите куки или сессии здесь
+            //        return RedirectToAction("Index", "Home");
+            //    }
+            //    else
+            //    {
+            //        ViewBag.ErrorMessage = "Invalid email or password";
+            //        return View();
+            //    }
+            //}
+            if (!ModelState.IsValid)
+                return View(nameof(Login), LogMod);
+            try
             {
-                CreateLogin = email,
-                CreatePassword = password,
-            };
-            var admin = _context.Admins.FirstOrDefault(u => u.CreateLogin == email);
+                //var user = await _context.GetUserByMail(LogMod.email);
+                
+                ////return RedirectToAction(nameof(ManageController.Sales), "Manage", new { usId = user.IsnNode});
+                //return RedirectToAction("Index", "Menu", new { usId = user.IsnNode, name = user.Name, surname = user.Surname });
+                var user = _context.Admins.FirstOrDefault(u => u.CreateLogin == LogMod.CreateLogin);
+                if (user == null) throw new Exception("Пользователь не найден");
+                return RedirectToAction("Index", "Menu");
+            }
+            catch (Exception ex)
             {
-                if (admin != null && BCrypt.Net.BCrypt.Verify(password, user.CreatePassword))
-                {
-                    // Успешная аутентификация
-                    // Установите куки или сессии здесь
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    ViewBag.ErrorMessage = "Invalid email or password";
-                    return View();
-                }
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return View(nameof(Login), LogMod);
             }
 
 
 
-
-
+        }
             //    [HttpGet]
             //    public IActionResult Login()
             //    {
@@ -146,6 +160,6 @@ namespace Car_Rental.Controllers
             //    //    }
             //    //    return View(model);
             //    //}
-        }
+        
     }
 }

@@ -1,7 +1,8 @@
-create database AutoRentDB
-go
 
-use AutoRentDB
+--create database AutoRentDB
+--go
+
+--use AutoRentDB
 
 go
 

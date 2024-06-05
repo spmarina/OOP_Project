@@ -1,207 +1,111 @@
 ﻿@model IEnumerable<Car_Rental.Models.Car>
+
 @{
-    ViewData["Title"] = "Таблица автомобилей";
+    Layout = null;
 }
 
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewData["Title"]</title>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
-            background-color: #f0f0f0;
+            background-image:url("kot.png");
         }
+
         .container {
             max-width: 800px;
             margin: 0 auto;
-            background-color: white;
+            background: #fff;
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        h2 {
+
+        h1 {
             text-align: center;
-            color: #333;
+            margin-bottom: 20px;
         }
-        table {
+
+        .table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
         }
-        table, th, td {
-            border: 1px solid #ccc;
-        }
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background-color: #f0f0f0;
-        }
-        .search-container, .filter-container {
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-        .search-container input, .filter-container select {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            flex: 1;
+
+            .table th, .table td {
+                padding: 12px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .table th {
+                background-color: #f2f2f2;
+            }
+
+        .actions a {
             margin-right: 10px;
-            min-width: 100px;
+            text-decoration: none;
+            color: #007bff;
         }
-        .search-container button, .filter-container button {
+
+            .actions a:hover {
+                text-decoration: underline;
+            }
+
+        .create-button {
+            display: inline-block;
             padding: 10px 20px;
-            border: none;
-            border-radius: 3px;
-            background-color: #007bff;
+            background-color: #28a745;
             color: white;
-            cursor: pointer;
-            flex-shrink: 0;
+            text-decoration: none;
+            border-radius: 5px;
         }
-        .search-container button:hover, .filter-container button:hover {
-            background-color: #0056b3;
-        }
-        @@media (max-width: 600px) {
-            .search-container, .filter-container {
-                flex-direction: column;
+
+            .create-button:hover {
+                background-color: #218838;
             }
-            .search-container input, .filter-container select, 
-            .search-container button, .filter-container button {
-                margin-bottom: 10px;
-                margin-right: 0;
-            }
-        }
     </style>
 </head>
-
-
-
-
-
 <body>
     <div class="container">
-        <h2>@ViewData["Title"]</h2>
-        <div class="search-container">
-            <input type="text" id="search-input" placeholder="Поиск по марке или модели">
-            <button onclick="searchCars()">Поиск</button>
-        </div>
-        <div class="filter-container">
-            <select id="brand-filter">
-                <option value="">Все бренды</option>
-                <!-- Динамически загружаемые опции брендов -->
-            </select>
-            <select id="availability-filter">
-                <option value="">Все</option>
-                <option value="true">Свободна</option>
-                <option value="false">Занята</option>
-            </select>
-            <button onclick="filterCars()">Фильтр</button>
-        </div>
-        
-        <table>
+        <h1>Car Rental Index</h1>
+        <p>
+            <a class="create-button" asp-action="Create">Create New</a>
+        </p>
+        <table class="table">
             <thead>
                 <tr>
-                    <th>Бренд</th>
-                    <th>Модель</th>
-                    <th>Цена аренды</th>
-                    <th>Свободна</th>
-                    
+                    <th>@Html.DisplayNameFor(model => model.Brand)</th>
+                    <th>@Html.DisplayNameFor(model => model.Model)</th>
+                    <th>@Html.DisplayNameFor(model => model.Price)</th>
+                    <th>@Html.DisplayNameFor(model => model.Availability)</th>
+                    <th></th>
                 </tr>
             </thead>
-            <tbody id="cars-table-body">
-                <!-- Данные будут загружены сюда -->
+            <tbody>
+                @foreach (var item in Model)
+                {   
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Brand)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Model)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Availability)</td>
+                        <td class="actions">
+                            <a asp-action="Edit" asp-route-id="@item.Cars_ID">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Cars_ID">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Cars_ID">Delete</a>
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
+        <body>
+        </body>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            loadCars();
-            loadBrands();
-        });
-
-        function loadCars() {
-            fetch('/api/Car')
-                .then(response => response.json())
-                .then(data => {
-                    const tableBody = document.getElementById('cars-table-body');
-                    tableBody.innerHTML = '';
-                    data.forEach(car => {
-                        const row = document.createElement('tr');
-                        row.innerHTML = `
-                            <td>${car.brand}</td>
-                            <td>${car.model}</td>
-                            <td>${car.rentalPrice}</td>
-                            <td>${car.isAvailable ? 'Да' : 'Нет'}</td>
-                        `;
-                        tableBody.appendChild(row);
-                    });
-                });
-        }
-
-        function searchCars() {
-            const query = document.getElementById('search-input').value;
-            fetch(`/api/Car/search?query=${query}`)
-                .then(response => response.json())
-                .then(data => {
-                    const tableBody = document.getElementById('cars-table-body');
-                    tableBody.innerHTML = '';
-                    data.forEach(car => {
-                        const row = document.createElement('tr');
-                        row.innerHTML = `
-                            <td>${car.brand}</td>
-                            <td>${car.model}</td>
-                            <td>${car.rentalPrice}</td>
-                            <td>${car.isAvailable ? 'Да' : 'Нет'}</td>
-                        `;
-                        tableBody.appendChild(row);
-                    });
-                });
-        }
-
-        function filterCars() {
-            const brand = document.getElementById('brand-filter').value;
-            const availability = document.getElementById('availability-filter').value;
-            fetch(`/api/Car/filter?brand=${brand}&isAvailable=${availability}`)
-                .then(response => response.json())
-                .then(data => {
-                    const tableBody = document.getElementById('cars-table-body');
-                    tableBody.innerHTML = '';
-                    data.forEach(car => {
-                        const row = document.createElement('tr');
-                        row.innerHTML = `
-                            <td>${car.brand}</td>
-                            <td>${car.model}</td>
-                            <td>${car.rentalPrice}</td>
-                            <td>${car.isAvailable ? 'Да' : 'Нет'}</td>
-                        `;
-                        tableBody.appendChild(row);
-                    });
-                });
-        }
-
-        function loadBrands() {
-            fetch('/api/Car/brands')
-                .then(response => response.json())
-                .then(brands => {
-                    const brandFilter = document.getElementById('brand-filter');
-                    brands.forEach(brand => {
-                        const option = document.createElement('option');
-                        option.value = brand;
-                        option.textContent = brand;
-                        brandFilter.appendChild(option);
-                    });
-                });
-        }
-    </script>
 </body>
 </html>

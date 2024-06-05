@@ -535,3 +535,4 @@ C:\Users\danil\Desktop\OOP_Project\Car_Rental\Car_Rental\obj\Debug\net8.0\Car_Re
 C:\Users\danil\Desktop\OOP_Project\Car_Rental\Car_Rental\obj\Debug\net8.0\Car_Rental.genruntimeconfig.cache
 C:\Users\danil\Desktop\OOP_Project\Car_Rental\Car_Rental\obj\Debug\net8.0\ref\Car_Rental.dll
 D:\Admin\Документы\ВУЗ\ООП\Проект\OOP_Project\Car_Rental\Car_Rental\bin\Debug\net8.0\BCrypt.Net.dll
+C:\Users\danil\Desktop\OOP_Project\Car_Rental\Car_Rental\bin\Debug\net8.0\BCrypt.Net.dll

@@ -1,77 +1,157 @@
-﻿using Car_Rental.Data;
-using Car_Rental.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using Car_Rental.Data;
+using Car_Rental.Models;
 
 namespace Car_Rental.Controllers
 {
-    
-
-    [Route("api/[controller]")]
-    [ApiController]
-    public class CarController1 : ControllerBase
+    public class CarController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public CarController1(ApplicationDbContext context)
+        public CarController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Car
-        [HttpGet]
-        
-        public async Task<ActionResult<IEnumerable<Car>>> Index()
+        // GET: Car
+        public async Task<IActionResult> Index()
         {
-            return await _context.Cars.ToListAsync();
+            return View(await _context.Cars.ToListAsync());
         }
 
-        // GET: api/Car/search?query=value
-        [HttpGet("search")]
-        public async Task<ActionResult<IEnumerable<Car>>> SearchCars(string query)
+        // GET: Car/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
-            return await _context.Cars
-                .Where(c => c.Brand.Contains(query) || c.Model.Contains(query))
-                .ToListAsync();
-        }
-
-        // GET: api/Car/filter?brand=value&isAvailable=value
-        [HttpGet("filter")]
-        public async Task<ActionResult<IEnumerable<Car>>> FilterCars(string brand, bool? isAvailable)
-        {
-            var cars = _context.Cars.AsQueryable();
-
-            if (!string.IsNullOrEmpty(brand))
+            if (id == null)
             {
-                cars = cars.Where(c => c.Brand == brand);
+                return NotFound();
             }
 
-            if (isAvailable.HasValue)
+            var car = await _context.Cars
+                .FirstOrDefaultAsync(m => m.Cars_ID == id);
+            if (car == null)
             {
-                cars = cars.Where(c => c.Availability == isAvailable.Value);
+                return NotFound();
             }
 
-            return await cars.ToListAsync();
+            return View(car);
         }
 
-        // GET: api/Car/brands
-        [HttpGet("brands")]
-        public async Task<ActionResult<IEnumerable<string>>> GetBrands()
-        {
-            return await _context.Cars
-                .Select(c => c.Brand)
-                .Distinct()
-                .ToListAsync();
-        }
-    }
-    public class CarController : Controller
-    {
-        public ActionResult Index()
+        // GET: Car/Create
+        public IActionResult Create()
         {
             return View();
+        }
+
+        // POST: Car/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Cars_ID,Brand,Model,Price,Availability")] Car car)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(car);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(car);
+        }
+
+        // GET: Car/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var car = await _context.Cars.FindAsync(id);
+            if (car == null)
+            {
+                return NotFound();
+            }
+            return View(car);
+        }
+
+        // POST: Car/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Cars_ID,Brand,Model,Price,Availability")] Car car)
+        {
+            if (id != car.Cars_ID)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(car);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!CarExists(car.Cars_ID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(car);
+        }
+
+        // GET: Car/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var car = await _context.Cars
+                .FirstOrDefaultAsync(m => m.Cars_ID == id);
+            if (car == null)
+            {
+                return NotFound();
+            }
+
+            return View(car);
+        }
+
+        // POST: Car/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var car = await _context.Cars.FindAsync(id);
+            if (car != null)
+            {
+                _context.Cars.Remove(car);
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool CarExists(int id)
+        {
+            return _context.Cars.Any(e => e.Cars_ID == id);
         }
     }
 }

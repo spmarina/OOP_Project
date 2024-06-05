@@ -3,48 +3,48 @@
   "WorkspaceRootPath": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|c:\\users\\danil\\desktop\\oop_project\\car_rental\\car_rental\\controllers\\customerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|solutionrelative:car_rental\\controllers\\customerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|c:\\users\\danil\\desktop\\oop_project\\car_rental\\car_rental\\views\\customers\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|solutionrelative:car_rental\\views\\customers\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|c:\\users\\danil\\desktop\\oop_project\\car_rental\\car_rental\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|solutionrelative:car_rental\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|c:\\users\\danil\\desktop\\oop_project\\car_rental\\car_rental\\views\\customers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|solutionrelative:car_rental\\views\\customers\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|c:\\users\\danil\\desktop\\oop_project\\car_rental\\car_rental\\views\\admin\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|solutionrelative:car_rental\\views\\admin\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|c:\\users\\danil\\desktop\\oop_project\\car_rental\\car_rental\\car_rental.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|solutionrelative:car_rental\\car_rental.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|c:\\users\\danil\\desktop\\oop_project\\car_rental\\car_rental\\controllers\\contractcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|solutionrelative:car_rental\\controllers\\contractcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|c:\\users\\danil\\desktop\\oop_project\\car_rental\\car_rental\\controllers\\customerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|solutionrelative:car_rental\\controllers\\customerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|c:\\users\\danil\\desktop\\oop_project\\car_rental\\car_rental\\models\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|solutionrelative:car_rental\\models\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|c:\\users\\danil\\desktop\\oop_project\\car_rental\\car_rental\\views\\customers\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|solutionrelative:car_rental\\views\\customers\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|c:\\users\\danil\\desktop\\oop_project\\car_rental\\car_rental\\views\\car\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|solutionrelative:car_rental\\views\\car\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|c:\\users\\danil\\desktop\\oop_project\\car_rental\\car_rental\\pages\\availiablecars.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|solutionrelative:car_rental\\pages\\availiablecars.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|c:\\users\\danil\\desktop\\oop_project\\car_rental\\car_rental\\controllers\\carcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|solutionrelative:car_rental\\controllers\\carcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|c:\\users\\danil\\desktop\\oop_project\\car_rental\\car_rental\\controllers\\cardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|solutionrelative:car_rental\\controllers\\cardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|c:\\users\\danil\\desktop\\oop_project\\car_rental\\car_rental\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|solutionrelative:car_rental\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|c:\\users\\danil\\desktop\\oop_project\\car_rental\\car_rental\\views\\customers\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|solutionrelative:car_rental\\views\\customers\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|c:\\users\\danil\\desktop\\oop_project\\car_rental\\car_rental\\views\\admin\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|solutionrelative:car_rental\\views\\admin\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|c:\\users\\danil\\desktop\\oop_project\\car_rental\\car_rental\\controllers\\cardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|solutionrelative:car_rental\\controllers\\cardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|c:\\users\\danil\\desktop\\oop_project\\car_rental\\car_rental\\migrations\\20240604195901_init migr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -53,10 +53,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|c:\\users\\danil\\desktop\\oop_project\\car_rental\\car_rental\\models\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|solutionrelative:car_rental\\models\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|c:\\users\\danil\\desktop\\oop_project\\car_rental\\car_rental\\car_rental.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{8FD5D2FD-D453-418A-90AE-9407030DFF02}|Car_Rental\\Car_Rental.csproj|solutionrelative:car_rental\\car_rental.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -66,7 +62,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 12,
+          "SelectedChildIndex": 14,
           "Children": [
             {
               "$type": "Bookmark",
@@ -78,56 +74,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\Program.cs",
-              "RelativeDocumentMoniker": "Car_Rental\\Program.cs",
-              "ToolTip": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\Program.cs",
-              "RelativeToolTip": "Car_Rental\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAUwAMAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-05T01:30:42.313Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ContractController.cs",
-              "DocumentMoniker": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\Controllers\\ContractController.cs",
-              "RelativeDocumentMoniker": "Car_Rental\\Controllers\\ContractController.cs",
-              "ToolTip": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\Controllers\\ContractController.cs",
-              "RelativeToolTip": "Car_Rental\\Controllers\\ContractController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-05T00:20:28.832Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "Customer.cs",
               "DocumentMoniker": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\Models\\Customer.cs",
               "RelativeDocumentMoniker": "Car_Rental\\Models\\Customer.cs",
               "ToolTip": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\Models\\Customer.cs",
               "RelativeToolTip": "Car_Rental\\Models\\Customer.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-05T00:20:25.445Z"
+              "WhenOpened": "2024-06-05T11:06:41.455Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\Views\\Customers\\Edit.cshtml",
-              "RelativeDocumentMoniker": "Car_Rental\\Views\\Customers\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\Views\\Customers\\Edit.cshtml",
-              "RelativeToolTip": "Car_Rental\\Views\\Customers\\Edit.cshtml",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAADAAAABMAAAA",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\Views\\Car\\Index.cshtml",
+              "RelativeDocumentMoniker": "Car_Rental\\Views\\Car\\Index.cshtml",
+              "ToolTip": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\Views\\Car\\Index.cshtml",
+              "RelativeToolTip": "Car_Rental\\Views\\Car\\Index.cshtml",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-05T00:20:03.805Z"
+              "WhenOpened": "2024-06-05T10:28:53.809Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
+              "Title": "AvailiableCars.cshtml",
+              "DocumentMoniker": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\Pages\\AvailiableCars.cshtml",
+              "RelativeDocumentMoniker": "Car_Rental\\Pages\\AvailiableCars.cshtml",
+              "ToolTip": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\Pages\\AvailiableCars.cshtml",
+              "RelativeToolTip": "Car_Rental\\Pages\\AvailiableCars.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-05T10:13:25.389Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\Views\\Customers\\Create.cshtml",
               "RelativeDocumentMoniker": "Car_Rental\\Views\\Customers\\Create.cshtml",
@@ -135,12 +121,11 @@
               "RelativeToolTip": "Car_Rental\\Views\\Customers\\Create.cshtml",
               "ViewState": "AQIAAFYAAAAAAAAAAAAAAGYAAABIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-04T23:55:05.258Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-04T23:55:05.258Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 7,
               "Title": "AdminController.cs",
               "DocumentMoniker": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "Car_Rental\\Controllers\\AdminController.cs",
@@ -148,11 +133,12 @@
               "RelativeToolTip": "Car_Rental\\Controllers\\AdminController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-04T23:39:45.997Z"
+              "WhenOpened": "2024-06-04T23:39:45.997Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 6,
               "Title": "CarController.cs",
               "DocumentMoniker": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\Controllers\\CarController.cs",
               "RelativeDocumentMoniker": "Car_Rental\\Controllers\\CarController.cs",
@@ -160,11 +146,12 @@
               "RelativeToolTip": "Car_Rental\\Controllers\\CarController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAA6AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-04T23:39:14.741Z"
+              "WhenOpened": "2024-06-04T23:39:14.741Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "CardController.cs",
               "DocumentMoniker": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\Controllers\\CardController.cs",
               "RelativeDocumentMoniker": "Car_Rental\\Controllers\\CardController.cs",
@@ -188,7 +175,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 1,
               "Title": "Car_Rental.csproj",
               "DocumentMoniker": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\Car_Rental.csproj",
               "RelativeDocumentMoniker": "Car_Rental\\Car_Rental.csproj",
@@ -196,17 +183,18 @@
               "RelativeToolTip": "Car_Rental\\Car_Rental.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-06-04T23:29:56.386Z"
+              "WhenOpened": "2024-06-04T23:29:56.386Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "CustomersController.cs",
               "DocumentMoniker": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\Controllers\\CustomersController.cs",
               "RelativeDocumentMoniker": "Car_Rental\\Controllers\\CustomersController.cs",
               "ToolTip": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\Controllers\\CustomersController.cs",
               "RelativeToolTip": "Car_Rental\\Controllers\\CustomersController.cs",
-              "ViewState": "AQIAACIAAAAAAAAAAAAAADAAAAAJAAAA",
+              "ViewState": "AQIAAEMAAAAAAAAAAAAwwFcAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-04T23:06:43.648Z",
               "EditorCaption": ""
@@ -225,7 +213,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\Views\\Admin\\Create.cshtml",
               "RelativeDocumentMoniker": "Car_Rental\\Views\\Admin\\Create.cshtml",
@@ -233,18 +221,17 @@
               "RelativeToolTip": "Car_Rental\\Views\\Admin\\Create.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAABHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-04T22:58:50.179Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-04T22:58:50.179Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\Views\\Customers\\Index.cshtml",
               "RelativeDocumentMoniker": "Car_Rental\\Views\\Customers\\Index.cshtml",
               "ToolTip": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\Views\\Customers\\Index.cshtml",
               "RelativeToolTip": "Car_Rental\\Views\\Customers\\Index.cshtml",
-              "ViewState": "AQIAAFQAAAAAAAAAAAAAADUAAAAWAAAA",
+              "ViewState": "AQIAADYAAAAAAAAAAAAAAEoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-06-04T22:50:12.411Z",
               "EditorCaption": ""

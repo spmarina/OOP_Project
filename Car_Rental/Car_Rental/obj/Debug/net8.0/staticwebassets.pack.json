@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\Car_Rental.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\wwwroot\\Images\\background.jpg",
+      "PackagePath": "staticwebassets\\Images\\background.jpg"
+    },
+    {
       "Id": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\wwwroot\\Images\\kot.png",
       "PackagePath": "staticwebassets\\Images\\kot.png"
     },

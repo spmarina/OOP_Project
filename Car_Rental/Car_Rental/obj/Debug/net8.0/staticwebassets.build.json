@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "7wKWtb5sjQmmLVyDD/KHTbsTuyID4WqOF0WJeq86/KI=",
+  "Hash": "GPYumUHrwcLb2NXh05jZtwPxilaIwPcJIR6K/l4HKKw=",
   "Source": "Car_Rental",
   "BasePath": "_content/Car_Rental",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\wwwroot\\Images\\background.jpg",
+      "SourceId": "Car_Rental",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\wwwroot\\",
+      "BasePath": "_content/Car_Rental",
+      "RelativePath": "Images/background.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\background.jpg"
     },
     {
       "Identity": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\wwwroot\\Images\\kot.png",

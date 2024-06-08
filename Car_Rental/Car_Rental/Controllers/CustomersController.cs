@@ -65,14 +65,48 @@ namespace Car_Rental.Controllers
                 Phone = phone,
                 ActiveRent = activeRent
             };
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(CreateCustomer);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Create","Customers");
+                int lastNameInt = Convert.ToInt32(lastName);
+                if (lastNameInt > 0)
+                {
+                    return View(CreateCustomer);
+                }
+            }
+            catch (FormatException) {
+                try
+                {
+                    int firstNameInt = Convert.ToInt32(firstName);
+                    if (firstNameInt > 0) { return View(CreateCustomer); }
+                }
+                catch (FormatException)
+                {
+                    try
+                    {
+                        int middleNameInt = Convert.ToInt32(middleName);
+                        if (middleNameInt > 0) { return View(CreateCustomer); }
+                    }
+                    catch (FormatException)
+                    {
+                        //string telephone = phone;
+                        //string area = phone.Substring(0, 3);
+                        //string major = phone.Substring(3, 3);
+                        //string minor = phone.Substring(6);
+                        //string formatted = string.Format("{0}-{1}-{2}", area, major, minor);
+
+                        if (ModelState.IsValid)
+                        {
+                            _context.Add(CreateCustomer);
+                            await _context.SaveChangesAsync();
+                            return RedirectToAction("Create", "Customers");
+                        }
+                    }
+                }
             }
             return View(CreateCustomer);
         }
+
+
 
         // GET: Customers/Edit/5
         public async Task<IActionResult> Edit(int? id)

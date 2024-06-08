@@ -1,8 +1,8 @@
 
---create database AutoRentDB
---go
+create database AutoRentDB
+go
 
---use AutoRentDB
+use AutoRentDB
 
 go
 
@@ -82,7 +82,7 @@ create table Admins
 	Admins_ID int Primary key identity,
 	CreateLogin nvarchar(50) not null,
 	CreatePassword nvarchar(50) not null,
-	Sales bigint default 0 not null,
+	Sales int default 0 not null,
 )
 
 

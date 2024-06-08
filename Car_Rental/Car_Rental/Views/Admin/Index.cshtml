@@ -56,69 +56,19 @@
 </head>
 <body>
     <div class="container">
-        <div id="auth-container">
-            <form method="post" asp-action="Login" asp-controller="Customer">
+            <form method = "post" action="/Admin/Login">  
                 <h2>Авторизация</h2>
-                <input class="form-input" name="username"/>
-                <input class="form-input" name="password"/>
-                <input type="submit"  class="form-button"></input>
+                <label> Введите имя пользователя
+                <p><input type = "text" class="form-input" name="username">
+                    </p>
+            </label>
+            <label> Введите пароль
+                <p><input type = "password" class="form-input" name="password">
+                    </p>
+            </label>
+
+                <button type="submit"  class="form-button">Войти</button>
                 </form>
-        </div>
     </div>
 </body>
 </html>
-
-
-
-
-@*<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CreateLogin)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatePassword)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sales)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
- <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreateLogin)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatePassword)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sales)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-    
-</table>
-</body>
-</html>
-*@

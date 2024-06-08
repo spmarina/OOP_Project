@@ -56,49 +56,24 @@ namespace Car_Rental.Controllers
   
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel model,string returnUrl)
+        public async Task<IActionResult> RegisterPost(string username, string password)
         {
-            ViewData["ReturnUrl"] = returnUrl;
-            if (ModelState.IsValid)
+            var isUserExists = await _context.Admins.FirstOrDefaultAsync(u => u.CreateLogin == username && u.CreatePassword == password);
+            if (isUserExists != null)
             {
-                var isUserExists = await _context.Admins.FirstOrDefaultAsync(u => u.CreateLogin == model.CreateLogin &&u.CreatePassword==model.CreatePassword);
-                if (isUserExists != null)
-                {
-                    ModelState.AddModelError("", "Пользователь с таким email уже существует");
-                    return View(model);
-                }
-
-                //var hashedPassword = BCrypt.Net.BCrypt.HashPassword(model.CreatePassword);
-
-                var newUser = new Admin
-                {
-                    CreateLogin = model.CreateLogin,
-                    CreatePassword = model.CreatePassword,
-                    Sales = 0,
-                };
-
-                _context.Admins.Add(newUser);
-                await _context.SaveChangesAsync();
-
-                var claims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name, newUser.CreateLogin),
-                };
-
-                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                var authProperties = new AuthenticationProperties
-                {
-                    IsPersistent = true,
-                };
-
-                await HttpContext.SignInAsync(
-                    CookieAuthenticationDefaults.AuthenticationScheme,
-                    new ClaimsPrincipal(claimsIdentity),
-                    authProperties);
-                CurrentAdmin.user_admin = newUser;
-                return RedirectToLocal(returnUrl);
+                ModelState.AddModelError("", "Пользователь с таким email уже существует");
+                return RedirectToAction("Index", "Admin");
             }
-            return View(model);
+            var newUser = new Admin
+            {
+                CreateLogin = username,
+                CreatePassword = password,
+                Sales = 0,
+            };
+            _context.Admins.Add(newUser);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Admin");
         }
 
         private IActionResult RedirectToLocal(string? returnUrl)
@@ -118,31 +93,21 @@ namespace Car_Rental.Controllers
 
 
 
-        [HttpPost(nameof(LoginPost), Name = nameof(LoginPost))]
-        public async Task<IActionResult> LoginPost(LoginModel LogMod)
+        [HttpPost]
+        public async Task<IActionResult> LoginPost(string username, string password)
         {
-
-
-            if (!ModelState.IsValid)
-                return View(nameof(Login), LogMod);
-            try
+            if (await _context.Admins.AnyAsync(x => x.CreateLogin == username))
             {
-                //var user = await _context.GetUserByMail(LogMod.email);
-
-                ////return RedirectToAction(nameof(ManageController.Sales), "Manage", new { usId = user.IsnNode});
-                //return RedirectToAction("Index", "Menu", new { usId = user.IsnNode, name = user.Name, surname = user.Surname });
-                var user = _context.Admins.FirstOrDefault(u => u.CreateLogin == LogMod.CreateLogin);
-                if (user == null) throw new Exception("Пользователь не найден");
-                return RedirectToAction("Index", "Menu");
+                var checkuser = await _context.Admins.FirstOrDefaultAsync(x => x.CreateLogin == username);
+                if (checkuser != null)
+                {
+                    if (checkuser.CreatePassword == password)
+                    {
+                        return RedirectToAction("Index", "Menu");
+                    }
+                }
             }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError(string.Empty, ex.Message);
-                return View(nameof(Login), LogMod);
-            }
-
-
-
+            return RedirectToAction("Index", "Admin");
         }
 
         [HttpGet]

@@ -35,7 +35,7 @@
               "RelativeDocumentMoniker": "Car_Rental\\Controllers\\AdminController.cs",
               "ToolTip": "D:\\Admin\\\u0414\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u044B\\\u0412\u0423\u0417\\\u041E\u041E\u041F\\\u041F\u0440\u043E\u0435\u043A\u0442\\OOP_Project\\Car_Rental\\Car_Rental\\Controllers\\AdminController.cs",
               "RelativeToolTip": "Car_Rental\\Controllers\\AdminController.cs",
-              "ViewState": "AQIAAEwAAAAAAAAAAAAmwC0AAAAnAAAA",
+              "ViewState": "AQIAAHMAAAAAAAAAAAAQwGAAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-08T13:00:36.588Z",
               "IsPinned": true,
@@ -52,8 +52,7 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-08T13:00:34.154Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -67,8 +66,7 @@
               "ToolTip": "C:\\Users\\\u0414\u0430\u043D\u0438\u0438\u043B\\Downloads\\Telegram Desktop\\AccountController.cs",
               "ViewState": "AQIAABgAAAAAAAAAAAAAACYAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-08T13:22:43.424Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-08T13:22:43.424Z"
             },
             {
               "$type": "Document",
@@ -80,8 +78,7 @@
               "RelativeToolTip": "Car_Rental\\Views\\Admin\\Index.cshtml",
               "ViewState": "AQIAADkAAAAAAAAAAAAAAEoAAABgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-08T13:17:44.858Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-08T13:17:44.858Z"
             }
           ]
         }

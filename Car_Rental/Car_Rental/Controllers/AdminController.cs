@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Car_Rental.DtoModels.Login;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
+using Microsoft.AspNetCore.Diagnostics;
 
 namespace Car_Rental.Controllers
 {
@@ -29,38 +30,30 @@ namespace Car_Rental.Controllers
             _context = context;
         }
 
-
-
-
-
-
-
         //REGISTER
 
         [HttpGet]
-        public IActionResult Register()
+        public async Task<IActionResult> Register(string username, string password)
         {
-            //return RedirectToAction("Index","Menu");
-            return View();
+            var isUserExists = await _context.Admins.FirstOrDefaultAsync(u => u.CreateLogin == username && u.CreatePassword == password);
+            if (isUserExists != null)
+            {
+                ModelState.AddModelError("", "Пользователь с таким email уже существует");
+                return RedirectToAction("Index", "Admin");
+            }
+            var newUser = new Admin
+            {
+                CreateLogin = username,
+                CreatePassword = password,
+                Sales = 0,
+            };
+            _context.Admins.Add(newUser);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Admin");
         }
 
-        //7[HttpPost]
-        // [Route("admin/{CreateLogin:string)/{CreatePassword:string }")]
-        //public async Task<IActionResult> Register(string email, string password)
-        //{
-        //    //------------------------------------------------------------------------------
-        //    //if (_context.Admins.Any(u => u.CreateLogin == email))
-        //    //{
-        //    //    ViewBag.ErrorMessage = "Email already registered";
-        //    //    return View();
-        //    //}
-        //    //---------------------------------------------------------------------------
-        //    var user = new Admin { CreateLogin = email, CreatePassword = BCrypt.Net.BCrypt.HashPassword(password) };
-        //    _context.Admins.Add(user);
-        //    await _context.SaveChangesAsync();
-
-        //    return RedirectToAction("Login");
-        //}
+  
 
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model,string returnUrl)
@@ -124,14 +117,6 @@ namespace Car_Rental.Controllers
 
 
 
-        //LOGIN
-
-        //[HttpGet(nameof(Login), Name = nameof(Login))]
-        //public IActionResult Login()
-        //{
-        //    return RedirectToAction("Index", "Menu");
-        //    //return RedirectToAction("Login", "Admin");
-        //}
 
         [HttpPost(nameof(LoginPost), Name = nameof(LoginPost))]
         public async Task<IActionResult> LoginPost(LoginModel LogMod)
@@ -159,69 +144,26 @@ namespace Car_Rental.Controllers
 
 
         }
+
         [HttpGet]
-        public IActionResult Login()
+        public async Task<IActionResult> Login(string username, string password)
         {
-            return RedirectToAction("Index", "Menu");
+            if(await  _context.Admins.AnyAsync(x=>x.CreateLogin== username))
+            {
+                var checkuser= await _context.Admins.FirstOrDefaultAsync(x=>x.CreateLogin== username);
+                if(checkuser != null)
+                {
+                    if (checkuser.CreatePassword == password)
+                    {
+                        return RedirectToAction("Index", "Menu");
+                    }
+                }
+            }
+            return RedirectToAction("Index", "Admin");
         }
+       
 
-        //[HttpPost]
-        //public IActionResult Login(string email, string password)
-        //{
-        //    var admin = _context.Admins.FirstOrDefault(a => a.CreateLogin == email && a.CreatePassword == password);
-
-
-        //    if (admin != null)
-        //    {
-        //        // Логика успешной авторизации (например, установка куки)
-        //        return RedirectToAction("Index", "Menu");
-        //    }
-        //    else
-        //    {
-        //        // Логика неудачной авторизации
-        //        ViewBag.ErrorMessage = "Invalid email or password";
-        //        return View();
-        //    }
-
-        //}
-
-        //    //[HttpPost]
-        //    //public IActionResult Login(string email, string password)
-        //    //{
-        //    //    var admin = _context.Admins.FirstOrDefault(a => a.CreateLogin == email && a.CreatePassword == password); // Assuming you have a Password field
-        //    //    if (admin == null)
-        //    //    {
-        //    //        return Json(new { success = false, message = "Invalid email or password" });
-        //    //    }
-
-        //    //    // Add your login logic here (e.g., setting cookies, session variables, etc.)
-
-        //    //    return Json(new { success = true, message = "Login successful" });
-        //}
-
-        //    [HttpGet]
-        //    public IActionResult Register()
-        //    {
-        //        if (ModelState.IsValid)
-        //        {
-        //            //_context.Admins.Add(model);
-        //            _context.SaveChanges();
-        //            return RedirectToAction("Login","Admin");
-        //        }
-        //        return RedirectToAction("Login", "Admin");
-        //    }
-
-        //    //[HttpPost]
-        //    //public IActionResult Register(Admin model)
-        //    //{
-        //    //    if (ModelState.IsValid)
-        //    //    {
-        //    //        _context.Admins.Add(model);
-        //    //        _context.SaveChanges();
-        //    //        return RedirectToAction("Login");
-        //    //    }
-        //    //    return View(model);
-        //    //}
+        
 
     }
 }

@@ -126,9 +126,5 @@ namespace Car_Rental.Controllers
             }
             return RedirectToAction("Index", "Admin");
         }
-       
-
-        
-
     }
 }

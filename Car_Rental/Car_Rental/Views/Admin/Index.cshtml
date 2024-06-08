@@ -28,14 +28,14 @@
             flex-direction: column;
         }
 
-            .form input {
+            .form-input {
                 margin-bottom: 10px;
                 padding: 10px;
                 border: 1px solid #ccc;
                 border-radius: 3px;
             }
 
-            .form button {
+            .form-button {
                 padding: 10px;
                 border: none;
                 border-radius: 3px;
@@ -45,20 +45,10 @@
                 cursor: pointer;
             }
 
-                .form button:hover {
+                .form-button:hover {
                     background-color: #0056b3;
                 }
-
-        .toggle-link {
-            text-align: center;
-            margin-top: 10px;
-            color: #007bff;
-            cursor: pointer;
-        }
-
-            .toggle-link:hover {
-                text-decoration: underline;
-            }
+}
 
         
     </style>
@@ -67,25 +57,12 @@
 <body>
     <div class="container">
         <div id="auth-container">
-            <!-- Форма авторизации -->
-            <div id="login-form" class="form">
-                <form method="post">            
+            <form method="post" asp-action="Login" asp-controller="Customer">
                 <h2>Авторизация</h2>
-                <input type="email" id="login-email" placeholder="Email" required>
-                <input type="password" id="login-password" placeholder="Пароль" required>
-                <button type="button" onclick="window.location.href='@Url.Action("Login","Admin")'">Войти</button>
-                <div class="toggle-link" onclick="toggleForm()">Нет аккаунта? Зарегистрируйтесь</div>
+                <input class="form-input" name="username"/>
+                <input class="form-input" name="password"/>
+                <input type="submit"  class="form-button"></input>
                 </form>
-
-            </div>
-            <!-- Форма регистрации -->
-            <div id="register-form" class="form" style="display: none;">
-                <h2>Регистрация</h2>
-                <input type="text" id="register-username" placeholder="Имя пользователя" required>
-                <input type="password" id="register-password" placeholder="Пароль" required>
-                <button type="button" onclick="window.location.href='@Url.Action("Register", "Admin")'">Зарегистрироваться</button>
-                <div class="toggle-link" onclick="toggleForm()">Уже есть аккаунт? Войдите</div>
-            </div>
         </div>
     </div>
 </body>

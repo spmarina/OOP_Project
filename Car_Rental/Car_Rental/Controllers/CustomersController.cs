@@ -45,9 +45,9 @@ namespace Car_Rental.Controllers
         }
 
         // GET: Customers/Create
+        [HttpGet]
         public IActionResult Create()
         {
-
             return View();
         }
 
@@ -55,12 +55,13 @@ namespace Car_Rental.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public async Task<IActionResult> Create(string lastName, string firstName, string middleName, string phone, bool activeRent)
+        //[ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(string lastName, string firtsName, string middleName, string phone, bool activeRent)
         {
             var CreateCustomer = new Customer
             {
                 LastName = lastName,
-                FirstName = firstName,
+                FirstName = firtsName,
                 MiddleName = middleName,
                 Phone = phone,
                 ActiveRent = activeRent
@@ -69,7 +70,7 @@ namespace Car_Rental.Controllers
             {
                 _context.Add(CreateCustomer);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index", "Customers");
+                return RedirectToAction("Index","Menu");
             }
             return View(CreateCustomer);
         }

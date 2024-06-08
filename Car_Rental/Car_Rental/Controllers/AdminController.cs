@@ -93,7 +93,7 @@ namespace Car_Rental.Controllers
 
 
 
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> LoginPost(string username, string password)
         {
             if (await _context.Admins.AnyAsync(x => x.CreateLogin == username))
@@ -107,13 +107,13 @@ namespace Car_Rental.Controllers
                     }
                 }
             }
-            return RedirectToAction("Index", "Admin");
+            return RedirectToAction("Index", "Menu");
         }
 
-        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> Login(string username, string password)
         {
-            if(await  _context.Admins.AnyAsync(x=>x.CreateLogin== username))
+            if (await  _context.Admins.AnyAsync(x=>x.CreateLogin== username))
             {
                 var checkuser= await _context.Admins.FirstOrDefaultAsync(x=>x.CreateLogin== username);
                 if(checkuser != null)

@@ -69,46 +69,25 @@
         <div id="auth-container">
             <!-- Форма авторизации -->
             <div id="login-form" class="form">
+                <form method="post">            
                 <h2>Авторизация</h2>
                 <input type="email" id="login-email" placeholder="Email" required>
                 <input type="password" id="login-password" placeholder="Пароль" required>
                 <button type="button" onclick="window.location.href='@Url.Action("Login","Admin")'">Войти</button>
                 <div class="toggle-link" onclick="toggleForm()">Нет аккаунта? Зарегистрируйтесь</div>
+                </form>
+
             </div>
             <!-- Форма регистрации -->
             <div id="register-form" class="form" style="display: none;">
                 <h2>Регистрация</h2>
                 <input type="text" id="register-username" placeholder="Имя пользователя" required>
-                <input type="email" id="register-email" placeholder="Email" required>
                 <input type="password" id="register-password" placeholder="Пароль" required>
                 <button type="button" onclick="window.location.href='@Url.Action("Register", "Admin")'">Зарегистрироваться</button>
                 <div class="toggle-link" onclick="toggleForm()">Уже есть аккаунт? Войдите</div>
             </div>
         </div>
     </div>
-    <script>
-        function toggleForm() {
-            const loginForm = document.getElementById('login-form');
-            const registerForm = document.getElementById('register-form');
-            if (loginForm.style.display === 'none') {
-                loginForm.style.display = 'flex';
-                registerForm.style.display = 'none';
-            } else {
-                loginForm.style.display = 'none';
-                registerForm.style.display = 'flex';
-            }
-        }
-
-        
-
-        function register() {
-            const username = document.getElementById('register-username').value;
-            const email = document.getElementById('register-email').value;
-            const password = document.getElementById('register-password').value;
-            // Добавьте сюда логику регистрации
-            console.log(`Регистрация: ${username}, ${email}, ${password}`);
-        }
-    </script>
 </body>
 </html>
 

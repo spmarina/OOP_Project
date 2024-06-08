@@ -56,12 +56,12 @@ namespace Car_Rental.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(string lastName, string firtsName, string middleName, string phone, bool activeRent)
+        public async Task<IActionResult> Create(string lastName, string firstName, string middleName, string phone, bool activeRent)
         {
             var CreateCustomer = new Customer
             {
                 LastName = lastName,
-                FirstName = firtsName,
+                FirstName = firstName,
                 MiddleName = middleName,
                 Phone = phone,
                 ActiveRent = activeRent
@@ -70,7 +70,7 @@ namespace Car_Rental.Controllers
             {
                 _context.Add(CreateCustomer);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index","Menu");
+                return RedirectToAction("Create","Customers");
             }
             return View(CreateCustomer);
         }

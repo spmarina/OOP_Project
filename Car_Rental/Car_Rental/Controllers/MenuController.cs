@@ -46,6 +46,10 @@ namespace Car_Rental.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
+        public ActionResult HRMenu()
+        {
+            return View();
+        }
         // POST: MenuController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]

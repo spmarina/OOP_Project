@@ -30,18 +30,25 @@ namespace Car_Rental.Controllers
         {
             _context = context;
         }
-
+        public async Task<IActionResult> db()
+        {
+            return View(await _context.Admins.ToListAsync());
+        }
+        public IActionResult Register()
+        {
+            return View();
+        }
         //REGISTER
 
-        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> Register(string username, string password, string? returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
-            var isUserExists = await _context.Admins.FirstOrDefaultAsync(u => u.CreateLogin == username && u.CreatePassword == password);
+            var isUserExists = await _context.Admins.FirstOrDefaultAsync(u => u.CreateLogin == username);
             if (isUserExists != null)
             {
                 ModelState.AddModelError("", "Пользователь с таким Логином уже существует");
-                return RedirectToAction("Index", "Admin");
+                return RedirectToAction("Register", "Admin");
             }
             var newUser = new Admin
             {
@@ -52,7 +59,7 @@ namespace Car_Rental.Controllers
             _context.Admins.Add(newUser);
             _context.SaveChanges();
 
-            return RedirectToAction("Index", "Admin");
+            return RedirectToAction("db", "Admin");
         }
 
   

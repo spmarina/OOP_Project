@@ -21,8 +21,9 @@ namespace Car_Rental.Controllers
     public class AdminController : Controller
     {
         private readonly ApplicationDbContext _context;
-        public IActionResult Index()
+        public IActionResult Index(string? returnUrl)
         {
+            ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
         public AdminController(ApplicationDbContext context)
@@ -31,21 +32,18 @@ namespace Car_Rental.Controllers
         }
 
         //REGISTER
-        public IActionResult Register()
-        {
-           return View();
-        }
 
-        [HttpPost]
-        public async Task<IActionResult> Register(string username, string password)
+        [HttpGet]
+        public async Task<IActionResult> Register(string username, string password, string? returnUrl = null)
         {
-            var isUserExists = await _context.Admins.FirstOrDefaultAsync(u => u.CreateLogin == username);
+            ViewData["ReturnUrl"] = returnUrl;
+            var isUserExists = await _context.Admins.FirstOrDefaultAsync(u => u.CreateLogin == username && u.CreatePassword == password);
             if (isUserExists != null)
             {
                 ModelState.AddModelError("", "Пользователь с таким Логином уже существует");
-                return RedirectToAction("Register", "Admin");
+                return RedirectToAction("Index", "Admin");
             }
-                var newUser = new Admin
+            var newUser = new Admin
             {
                 CreateLogin = username,
                 CreatePassword = password,
@@ -54,18 +52,15 @@ namespace Car_Rental.Controllers
             _context.Admins.Add(newUser);
             _context.SaveChanges();
 
-            return RedirectToAction("db", "Admin");
-        }
-        public async Task<IActionResult> db()
-        {
-            return View(await _context.Admins.ToListAsync());
+            return RedirectToAction("Index", "Admin");
         }
 
-
+  
 
         [HttpPost]
-        public async Task<IActionResult> RegisterPost(string username, string password)
+        public async Task<IActionResult> RegisterPost(string username, string password, string? returnUrl)
         {
+            ViewData["ReturnUrl"] = returnUrl;
             var isUserExists = await _context.Admins.FirstOrDefaultAsync(u => u.CreateLogin == username && u.CreatePassword == password);
             if (isUserExists != null)
             {
@@ -86,6 +81,8 @@ namespace Car_Rental.Controllers
 
         private IActionResult RedirectToLocal(string? returnUrl)
         {
+
+            ViewData["ReturnUrl"] = returnUrl;
             if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
             {
                 return Redirect(returnUrl);
@@ -102,8 +99,9 @@ namespace Car_Rental.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> LoginPost(string username, string password)
+        public async Task<IActionResult> LoginPost(string username, string password, string? returnUrl)
         {
+            ViewData["ReturnUrl"] = returnUrl;
             if (await _context.Admins.AnyAsync(x => x.CreateLogin == username))
             {
                 var checkuser = await _context.Admins.FirstOrDefaultAsync(x => x.CreateLogin == username);
@@ -119,22 +117,27 @@ namespace Car_Rental.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(string username, string password)
+        public async Task<IActionResult> Login(string username, string password, string? returnUrl)
         {
-            if (await  _context.Admins.AnyAsync(x=>x.CreateLogin== username))
+            ViewData["ReturnUrl"] = returnUrl;
+            if (ModelState.IsValid)
             {
-                var checkuser= await _context.Admins.FirstOrDefaultAsync(x=>x.CreateLogin== username);
-                if(checkuser != null)
+
+                if (await _context.Admins.AnyAsync(x => x.CreateLogin == username))
                 {
-                    if (checkuser.CreatePassword == password)
+                    var checkuser = await _context.Admins.FirstOrDefaultAsync(x => x.CreateLogin == username);  
+                    if (checkuser != null)
                     {
                         if (username == "Michail" && password == "12345678")
                             return RedirectToAction("HRMenu", "Menu");
-                        //gg
                         else
+                        if (checkuser.CreatePassword == password)
+                        {
                             return RedirectToAction("Index", "Menu");
+                        }
                     }
                 }
+                
             }
             return RedirectToAction("Index", "Admin");
         }

@@ -1,4 +1,4 @@
-﻿@model Car_Rental.Models.Customer
+﻿
 
 @{
     Layout = null;
@@ -8,7 +8,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Create Customer</title>
+    <title>Сделать заказ</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -76,50 +76,48 @@
 
 <body>
     <div class="container">
-        <h4>Создать администратора</h4>
+        <h4>Создать заказ</h4>
         <hr />
-        <form method="post" action="Admin/Order"
-            "<div class="form-group">
+        <form method="post" action="Order/Order">
+            <div class="form-group">
                 <label class="control-label">Введите фамилию</label>
-                <input class="form-control" name="LastName" />
+                <input type="text" class="form-control" name="LastName" required/>
             </div>
             <div class="form-group">
                 <label class="control-label">Введите имя</label>
-                <input class="form-control" name="FirstName" />
+                <input type="text" class="form-control" name="FirstName" required />
             </div>
             <div class="form-group">
                 <label class="control-label">Введите отчество</label>
-                <input class="form-control" name="MiddleName" />
+                <input type="text" class="form-control" name="MiddleName" required />
             </div>
             <div class="form-group">
                 <label class="control-label">Введите телефон</label>
-                <input class="form-control" name="Phone" />
+                <input type="text" class="form-control" name="Phone" required />
             </div>
             <div class="form-group">
                 <label class="control-label">Введите ID машины</label>
-                <input class="form-control" name="Car_ID" />
+                <input type="number" class="form-control" name="Car_ID" required />
             </div>
             <div class="form-group">
                 <label class="control-label">Введите дату окончания аренды</label>
-                <input class="form-control" name="username" />
+                <input type="date" class="form-control" name"LastDate" required />
             </div>
             <div class="form-group">
-                <label class="control-label">Введите логин</label>
-                <input class="form-control" name="username" />
+                <label class="control-label">Введите номер контракта</label>
+                <input type="number" class="form-control" name="Number" required />
             </div>
             <div class="form-group">
-                <label class="control-label">Введите логин</label>
-                <input class="form-control" name="username" />
+                <label class="control-label">Введите ссылку на контракт</label>
+                <input type="url" class="form-control" name="DocumentLink" required />
             </div>
-            <button type="submit" class="form-button">Создать</button>
+            <div class="form-group">
+                <label class="control-label">Введите логин администратора</label>
+                <input type="text" class="form-control" name="username" required />
+            </div>
+            <button type="submit" class="form-button">Создать заказ</button>
         </form>
         <a href="@Url.Action("db", "Admin")">Вернуться к списку</a>
     </div>
-
-    @section Scripts {
-        @{
-            await Html.RenderPartialAsync("_ValidationScriptsPartial");
-        }
-    }
 </body>
 </html>

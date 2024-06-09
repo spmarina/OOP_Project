@@ -90,6 +90,7 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Фамилия</th>
                     <th>Имя</th>
                     <th>Отчество</th>
@@ -101,6 +102,7 @@
                 @foreach (var item in Model)
                 {
                     <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Customers_ID)</td>
                         <td>@Html.DisplayFor(modelItem => item.LastName)</td>
                         <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
                         <td>@Html.DisplayFor(modelItem => item.MiddleName)</td>

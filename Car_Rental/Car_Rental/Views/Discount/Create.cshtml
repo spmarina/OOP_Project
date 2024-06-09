@@ -1,47 +1,94 @@
-﻿@model Car_Rental.Models.Discount
+﻿@model Car_Rental.Models.Customer
 
 @{
     Layout = null;
 }
 
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
+    <title>Create Customer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h4 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
+
+        .form-control {
+            width: 97%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+
+        .back-to-list {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+            .back-to-list:hover {
+                text-decoration: underline;
+            }
+    </style>
 </head>
 <body>
-
-<h4>Discount</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="container">
+        <h4>Создать скидку</h4>
+        <hr />
+        <form method="post" action="Create">
             <div class="form-group">
-                <label asp-for="Cars_ID" class="control-label"></label>
-                <input asp-for="Cars_ID" class="form-control" />
-                <span asp-validation-for="Cars_ID" class="text-danger"></span>
+                <label class="control-label">Введите ID машины</label>
+                <input type="number"class="form-control" name="cars_ID" />
             </div>
             <div class="form-group">
-                <label asp-for="NewPrice" class="control-label"></label>
-                <input asp-for="NewPrice" class="form-control" />
-                <span asp-validation-for="NewPrice" class="text-danger"></span>
+                <label class="control-label">Введите размер скидки в %</label>
+                <input class="form-control" name="new_price" />
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+            <button type="submit" class="form-button">Создать</button>
         </form>
+        <a href="@Url.Action("Index", "Discount")">Вернуться к списку</a>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
 </body>
 </html>

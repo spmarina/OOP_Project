@@ -52,7 +52,7 @@ namespace Car_Rental.Controllers
         // POST: Discount/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int cars_ID,int new_price)
+        public async Task<IActionResult> Create(int cars_ID,byte new_price)
         {
             var createDiscount = new Discount
             {

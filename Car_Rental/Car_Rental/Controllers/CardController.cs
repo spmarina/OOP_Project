@@ -54,7 +54,6 @@ namespace Car_Rental.Controllers
 
         // POST: Card/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(string lastName, string firstName, string middleName, string phone, bool activeRent)
         {
             

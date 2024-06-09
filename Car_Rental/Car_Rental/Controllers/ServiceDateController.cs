@@ -53,16 +53,26 @@ namespace Car_Rental.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ServiceDate_ID,Cars_ID,PreviousDate,NextDate")] ServiceDate serviceDate)
+        public async Task<IActionResult> Create(int cars_ID, DateTime PreviousDate, DateTime NextDate)
         {
+            var createServiceDate = new ServiceDate
+            {
+                Cars_ID = cars_ID,
+                PreviousDate = PreviousDate,
+                NextDate = NextDate
+            };
+            var checkcar = await _context.Cars.FirstOrDefaultAsync(x => x.Cars_ID == cars_ID);
+            if (checkcar == null)
+            {
+                return RedirectToAction("Create", "ServiceDate");
+            }
             if (ModelState.IsValid)
             {
-                _context.Add(serviceDate);
+                _context.Add(createServiceDate);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "ServiceDate");
             }
-            return View(serviceDate);
+            return View(createServiceDate);
         }
 
         // GET: ServiceDate/Edit/5

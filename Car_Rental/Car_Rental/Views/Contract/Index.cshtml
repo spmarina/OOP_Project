@@ -5,57 +5,110 @@
 }
 
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>База данных контрактов</title>
+    <style>
+
+        body {
+            background: url(images/background.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .background {
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: blue;
+        }
+
+        .table {
+            width: 100%;
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+            .table th, .table td {
+                border: 1px solid black;
+                color: blue;
+                padding: 12px;
+                text-align: center;
+                background-color: #f2f2f2;
+            }
+
+            .table th {
+                color: black;
+                border: 1px solid black;
+                background-color: blue;
+            }
+
+
+
+        .create-button {
+            text-align: center;
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: blue;
+            color: white;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-decoration: none;
+        }
+
+            .create-button:hover {
+                background-color: #218838;
+            }
+    </style>
 </head>
 <body>
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Customers_ID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Number)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreateDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cards_ID)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Customers_ID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Number)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreateDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cards_ID)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Contracts_ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Contracts_ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Contracts_ID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <div class="background"></div>
+    <div class="container">
+        <h1>База данных контрактов </h1>
+        <p>
+        <a class="create-button" href='@Url.Action("Index", "Menu")'>Назад</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID контракта</th>
+                    <th>ID посетителя</th>
+                    <th>Номер контракта</th>
+                    <th>Дата подписания контракта</th>
+                    <th>ID карты</th>
+                    @*<th>Ссылка на скан документа</th>*@
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Contracts_ID)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Customers_ID)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Number)</td>
+                        <td>@Html.DisplayFor(modelItem => item.CreateDate)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Cards_ID)</td>
+                        @*<td>@Html.DisplayFor(modelItem => item.DocumentLink)</td>*@
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

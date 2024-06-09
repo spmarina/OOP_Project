@@ -22,12 +22,20 @@ namespace Car_Rental.Controllers
         // GET: Car
         public async Task<IActionResult> Index()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             return View(await _context.Cars.ToListAsync());
         }
 
         // GET: Car/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             if (id == null)
             {
                 return NotFound();
@@ -47,6 +55,10 @@ namespace Car_Rental.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             return View();
         }
 
@@ -55,7 +67,10 @@ namespace Car_Rental.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(string brand, string model, decimal price, bool availability)
         {
-            
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             var CreateCar = new Car
             {
                 Brand = brand,
@@ -103,6 +118,10 @@ namespace Car_Rental.Controllers
         // GET: Car/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             if (id == null)
             {
                 return NotFound();
@@ -121,6 +140,10 @@ namespace Car_Rental.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Cars_ID,Brand,Model,Price,Availability")] Car car)
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             if (id != car.Cars_ID)
             {
                 return NotFound();
@@ -152,6 +175,10 @@ namespace Car_Rental.Controllers
         // GET: Car/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             if (id == null)
             {
                 return NotFound();
@@ -172,6 +199,10 @@ namespace Car_Rental.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             var car = await _context.Cars.FindAsync(id);
             if (car != null)
             {
@@ -184,6 +215,7 @@ namespace Car_Rental.Controllers
 
         private bool CarExists(int id)
         {
+            
             return _context.Cars.Any(e => e.Cars_ID == id);
         }
     }

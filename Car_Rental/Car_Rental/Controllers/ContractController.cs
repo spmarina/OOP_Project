@@ -22,12 +22,20 @@ namespace Car_Rental.Controllers
         // GET: Contract
         public async Task<IActionResult> Index()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             return View(await _context.Contracts.ToListAsync());
         }
 
         // GET: Contract/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             if (id == null)
             {
                 return NotFound();
@@ -46,6 +54,10 @@ namespace Car_Rental.Controllers
         // GET: Contract/Create
         public IActionResult Create()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             return View();
         }
 
@@ -56,6 +68,10 @@ namespace Car_Rental.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Contracts_ID,Customers_ID,Number,CreateDate,Cards_ID")] Contract contract)
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(contract);

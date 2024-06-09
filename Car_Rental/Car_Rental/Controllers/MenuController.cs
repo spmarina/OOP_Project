@@ -6,48 +6,74 @@ namespace Car_Rental.Controllers
     public class MenuController : Controller
     {
         // GET: MenuController
-        public ActionResult Index(string? returnUrl)
+        public async Task<IActionResult> Index()
         {
-            ViewData["ReturnUrl"] = returnUrl;
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             return View();
         }
-        public ActionResult Customers(string? returnUrl)
+        public ActionResult Customers()
         {
-            ViewData["ReturnUrl"] = returnUrl;
+
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             return View();
         }
 
         // GET: MenuController/Details/5
-        public ActionResult Car(string? returnUrl)
+        public ActionResult Car()
         {
-            ViewData["ReturnUrl"] = returnUrl;
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             return View();
         }
 
         // GET: MenuController/Create
-        public ActionResult Rent(string? returnUrl)
+        public ActionResult Rent()
         {
-            ViewData["ReturnUrl"] = returnUrl;
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             return View();
         }
 
-        public ActionResult Discount(string? returnUrl)
+        public ActionResult Discount()
         {
-            ViewData["ReturnUrl"] = returnUrl;
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             return View();
         }
-        public ActionResult ServiceDate(string? returnUrl)
+        public ActionResult ServiceDate()
         {
-            ViewData["ReturnUrl"] = returnUrl;
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             return View();
         }
-        public ActionResult Contract(string? returnUrl)
+        public ActionResult Contract()
         {
-            ViewData["ReturnUrl"] = returnUrl;
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             return View();
         }
         public ActionResult HRMenu()
         {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             return View();
         }
         // POST: MenuController/Create

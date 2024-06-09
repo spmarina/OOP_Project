@@ -18,5 +18,14 @@ namespace Car_Rental.Controllers
         {
             _context = context;
         }
+        [HttpPost]
+        public IActionResult Order(string LastName, string FirstName, string MiddleName, string Phone, int Car_ID, DateTime LastDate, int Number, string DocumentLink, string username)
+        {
+            return View();
+        }
+        public IActionResult Order()
+        {
+            return View();
+        }
     }
 }

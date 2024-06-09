@@ -94,7 +94,7 @@ namespace Car_Rental.Controllers
             {
                 _context.Add(CreateCar);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Create", "Car");
+                return RedirectToAction("Index", "Car");
             }
             return View(CreateCar);
         }

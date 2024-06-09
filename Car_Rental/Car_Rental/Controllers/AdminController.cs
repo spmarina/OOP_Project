@@ -38,7 +38,7 @@ namespace Car_Rental.Controllers
             var isUserExists = await _context.Admins.FirstOrDefaultAsync(u => u.CreateLogin == username && u.CreatePassword == password);
             if (isUserExists != null)
             {
-                ModelState.AddModelError("", "Пользователь с таким email уже существует");
+                ModelState.AddModelError("", "Пользователь с таким Логином уже существует");
                 return RedirectToAction("Index", "Admin");
             }
             var newUser = new Admin

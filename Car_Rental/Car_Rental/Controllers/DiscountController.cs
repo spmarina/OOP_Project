@@ -50,19 +50,27 @@ namespace Car_Rental.Controllers
         }
 
         // POST: Discount/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Discounts_ID,Cars_ID,NewPrice")] Discount discount)
+        public async Task<IActionResult> Create(int cars_ID,int new_price)
         {
+            var createDiscount = new Discount
+            {
+                Cars_ID = cars_ID,
+                NewPrice = new_price,
+            };
+            var checkcar = await _context.Cars.FirstOrDefaultAsync(x => x.Cars_ID == cars_ID);
+            if(checkcar == null)
+            {
+                return RedirectToAction("Create", "Discounts");
+            }
             if (ModelState.IsValid)
             {
-                _context.Add(discount);
+                _context.Add(createDiscount);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Discounts");
             }
-            return View(discount);
+            return View(createDiscount);
         }
 
         // GET: Discount/Edit/5

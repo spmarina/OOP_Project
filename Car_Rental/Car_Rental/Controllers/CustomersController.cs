@@ -116,7 +116,7 @@ namespace Car_Rental.Controllers
                 await _context.SaveChangesAsync();
 
                 CreateCardForCustomer(CreateCustomer.Customers_ID);
-                return RedirectToAction("Create", "Customers");
+                return RedirectToAction("Index", "Customers");
             }
             return View(CreateCustomer);
         }

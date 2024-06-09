@@ -1,15 +1,124 @@
-﻿
+﻿@model Car_Rental.Models.Customer
+
 @{
     Layout = null;
 }
 
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>Create Customer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h4 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
+
+        .form-control {
+            width: 97%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+
+        .back-to-list {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+            .back-to-list:hover {
+                text-decoration: underline;
+            }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <h4>Создать администратора</h4>
+        <hr />
+        <form method="post" action="Admin/Order"
+            "<div class="form-group">
+                <label class="control-label">Введите фамилию</label>
+                <input class="form-control" name="LastName" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Введите имя</label>
+                <input class="form-control" name="FirstName" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Введите отчество</label>
+                <input class="form-control" name="MiddleName" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Введите телефон</label>
+                <input class="form-control" name="Phone" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Введите ID машины</label>
+                <input class="form-control" name="Car_ID" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Введите дату окончания аренды</label>
+                <input class="form-control" name="username" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Введите логин</label>
+                <input class="form-control" name="username" />
+            </div>
+            <div class="form-group">
+                <label class="control-label">Введите логин</label>
+                <input class="form-control" name="username" />
+            </div>
+            <button type="submit" class="form-button">Создать</button>
+        </form>
+        <a href="@Url.Action("db", "Admin")">Вернуться к списку</a>
+    </div>
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
 </body>
 </html>

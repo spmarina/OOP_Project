@@ -130,6 +130,7 @@ namespace Car_Rental.Controllers
                     {
                         if (username == "Michail" && password == "12345678")
                             return RedirectToAction("HRMenu", "Menu");
+                        //gg
                         else
                             return RedirectToAction("Index", "Menu");
                     }

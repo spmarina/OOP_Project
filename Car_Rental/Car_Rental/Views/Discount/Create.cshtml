@@ -1,4 +1,4 @@
-﻿@model Car_Rental.Models.Customer
+﻿@model Car_Rental.Models.Discount
 
 @{
     Layout = null;
@@ -80,11 +80,11 @@
         <form method="post" action="Create">
             <div class="form-group">
                 <label class="control-label">Введите ID машины</label>
-                <input type="number"class="form-control" name="cars_ID" />
+                <input class="form-control" name="cars_ID" />
             </div>
             <div class="form-group">
                 <label class="control-label">Введите размер скидки в %</label>
-                <input class="form-control" name="new_price" />
+                <input type = "number" class="form-control" name="new_price" />
             </div>
             <button type="submit" class="form-button">Создать</button>
         </form>

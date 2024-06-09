@@ -51,7 +51,6 @@ namespace Car_Rental.Controllers
 
         // POST: Discount/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(int cars_ID,byte new_price)
         {
             var createDiscount = new Discount
@@ -62,13 +61,13 @@ namespace Car_Rental.Controllers
             var checkcar = await _context.Cars.FirstOrDefaultAsync(x => x.Cars_ID == cars_ID);
             if(checkcar == null)
             {
-                return RedirectToAction("Create", "Discounts");
+                return RedirectToAction("Create", "Discount");
             }
             if (ModelState.IsValid)
             {
                 _context.Add(createDiscount);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index", "Discounts");
+                return RedirectToAction("Index", "Discount");
             }
             return View(createDiscount);
         }

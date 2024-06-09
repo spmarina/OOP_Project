@@ -8,72 +8,44 @@ namespace Car_Rental.Controllers
         // GET: MenuController
         public async Task<IActionResult> Index()
         {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Index", "Admin");
-            }
             return View();
         }
         public ActionResult Customers()
         {
-
-            if (!User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Index", "Admin");
-            }
             return View();
         }
 
         // GET: MenuController/Details/5
         public ActionResult Car()
         {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Index", "Admin");
-            }
+            
             return View();
         }
 
         // GET: MenuController/Create
         public ActionResult Rent()
         {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Index", "Admin");
-            }
+            
             return View();
         }
 
         public ActionResult Discount()
         {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Index", "Admin");
-            }
+            
             return View();
         }
         public ActionResult ServiceDate()
         {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Index", "Admin");
-            }
+            
             return View();
         }
         public ActionResult Contract()
         {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Index", "Admin");
-            }
+            
             return View();
         }
         public ActionResult HRMenu()
         {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Index", "Admin");
-            }
             return View();
         }
         // POST: MenuController/Create

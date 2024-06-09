@@ -31,17 +31,21 @@ namespace Car_Rental.Controllers
         }
 
         //REGISTER
+        public IActionResult Register()
+        {
+           return View();
+        }
 
-        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> Register(string username, string password)
         {
-            var isUserExists = await _context.Admins.FirstOrDefaultAsync(u => u.CreateLogin == username && u.CreatePassword == password);
+            var isUserExists = await _context.Admins.FirstOrDefaultAsync(u => u.CreateLogin == username);
             if (isUserExists != null)
             {
                 ModelState.AddModelError("", "Пользователь с таким Логином уже существует");
-                return RedirectToAction("Index", "Admin");
+                return RedirectToAction("Register", "Admin");
             }
-            var newUser = new Admin
+                var newUser = new Admin
             {
                 CreateLogin = username,
                 CreatePassword = password,
@@ -50,10 +54,14 @@ namespace Car_Rental.Controllers
             _context.Admins.Add(newUser);
             _context.SaveChanges();
 
-            return RedirectToAction("Index", "Admin");
+            return RedirectToAction("db", "Admin");
+        }
+        public async Task<IActionResult> db()
+        {
+            return View(await _context.Admins.ToListAsync());
         }
 
-  
+
 
         [HttpPost]
         public async Task<IActionResult> RegisterPost(string username, string password)
@@ -120,7 +128,10 @@ namespace Car_Rental.Controllers
                 {
                     if (checkuser.CreatePassword == password)
                     {
-                        return RedirectToAction("Index", "Menu");
+                        if (username == "Michail" && password == "12345678")
+                            return RedirectToAction("HRMenu", "Menu");
+                        else
+                            return RedirectToAction("Index", "Menu");
                     }
                 }
             }

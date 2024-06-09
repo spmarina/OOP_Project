@@ -1,57 +1,104 @@
-﻿@model Car_Rental.Models.Car
+﻿@model Car_Rental.Models.Customer
 
 @{
     Layout = null;
 }
 
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
+    <title>Create Customer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h4 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+            .form-group label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
+
+        .form-control {
+            width: 97%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+
+        .back-to-list {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+            .back-to-list:hover {
+                text-decoration: underline;
+            }
+    </style>
 </head>
 <body>
-
-<h4>Car</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="container">
+        <h4>Создать машину</h4>
+        <hr />
+        <form method="post" action="Create">
             <div class="form-group">
-                <label asp-for="Brand" class="control-label"></label>
-                <input asp-for="Brand" class="form-control" />
-                <span asp-validation-for="Brand" class="text-danger"></span>
+                <label class="control-label">Введите бренд</label>
+                <input class="form-control" name="brand" />
             </div>
             <div class="form-group">
-                <label asp-for="Model" class="control-label"></label>
-                <input asp-for="Model" class="form-control" />
-                <span asp-validation-for="Model" class="text-danger"></span>
+                <label class="control-label">Введите модель</label>
+                <input class="form-control" name="model" />
             </div>
             <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
+                <label class="control-label">Введите цену</label>
+                <input type="number" class="form-control" name="price" />
             </div>
             <div class="form-group">
-                <label asp-for="Availability" class="control-label"></label>
-                <input asp-for="Availability" class="form-control" />
-                <span asp-validation-for="Availability" class="text-danger"></span>
+                <label class="control-label">Доступна ли машина для аренды?</label>
+                <label class="control-label">Да&nbsp;Нет </label>
+                <input type="radio" name="activeRent" value="true" />
+                <input type="radio" name="activeRent" value="false" />
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+            <button type="submit" class="form-button">Создать</button>
         </form>
+        <a href="@Url.Action("Index", "Car")">Вернуться к списку</a>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
 </body>
 </html>

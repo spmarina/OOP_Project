@@ -13,7 +13,7 @@ namespace Car_Rental.Models
         {
             get; set;
         }
-        public int Number
+        public long Number
         {
             get; set;
         }

@@ -65,43 +65,58 @@ namespace Car_Rental.Controllers
                 Phone = phone,
                 ActiveRent = activeRent
             };
-            try
+            char[] arr;
+            //Проверка фамилии
+            arr = lastName.ToCharArray();
+            foreach (char c in arr)
             {
-                int lastNameInt = Convert.ToInt32(lastName);
-                if (lastNameInt > 0)
+                if (((c < 65) || (c > 90)) && ((c < 97) || (c > 122)))
+                {
+                    return View(CreateCustomer);
+                }
+
+            }
+            //Проверка имени
+            arr = firstName.ToCharArray();
+            foreach (char c in arr)
+            {
+                if (((c < 65) || (c > 90)) && ((c < 97) || (c > 122)))
+                {
+                    return View(CreateCustomer);
+                }
+
+            }
+            //Проверка отчества
+            arr = middleName.ToCharArray();
+            foreach (char c in arr)
+            {
+                if (((c < 65) || (c > 90)) && ((c < 97) || (c > 122)))
+                {
+                    return View(CreateCustomer);
+                }
+
+            }
+            //Проверка телефона
+            arr = phone.ToCharArray();
+            int k = 0;
+            foreach (char c in arr)
+            {
+                k++;
+                if ((c < 48) || (c > 57)||(k>11))
                 {
                     return View(CreateCustomer);
                 }
             }
-            catch (FormatException) {
-                try
-                {
-                    int firstNameInt = Convert.ToInt32(firstName);
-                    if (firstNameInt > 0) { return View(CreateCustomer); }
-                }
-                catch (FormatException)
-                {
-                    try
-                    {
-                        int middleNameInt = Convert.ToInt32(middleName);
-                        if (middleNameInt > 0) { return View(CreateCustomer); }
-                    }
-                    catch (FormatException)
-                    {
-                        //string telephone = phone;
-                        //string area = phone.Substring(0, 3);
-                        //string major = phone.Substring(3, 3);
-                        //string minor = phone.Substring(6);
-                        //string formatted = string.Format("{0}-{1}-{2}", area, major, minor);
-
-                        if (ModelState.IsValid)
-                        {
-                            _context.Add(CreateCustomer);
-                            await _context.SaveChangesAsync();
-                            return RedirectToAction("Create", "Customers");
-                        }
-                    }
-                }
+            if (k < 11)
+            {
+                return View(CreateCustomer);
+            }
+            //Проферка True/False
+            if (ModelState.IsValid)
+            {
+                _context.Add(CreateCustomer);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Create", "Customers");
             }
             return View(CreateCustomer);
         }

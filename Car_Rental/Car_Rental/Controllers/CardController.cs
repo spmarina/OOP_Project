@@ -16,12 +16,14 @@ namespace Car_Rental.Controllers
 
         public CardController(ApplicationDbContext context)
         {
+
             _context = context;
         }
 
         // GET: Card
         public async Task<IActionResult> Index()
         {
+           
             return View(await _context.Cards.ToListAsync());
         }
 
@@ -46,6 +48,7 @@ namespace Car_Rental.Controllers
         // GET: Card/Create
         public IActionResult Create()
         {
+            
             return View();
         }
 
@@ -54,6 +57,7 @@ namespace Car_Rental.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(string lastName, string firstName, string middleName, string phone, bool activeRent)
         {
+            
             var CreateCustomer = new Customer
             {
                 LastName = lastName,
@@ -121,6 +125,7 @@ namespace Car_Rental.Controllers
         // GET: Card/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            
             if (id == null)
             {
                 return NotFound();
@@ -141,6 +146,7 @@ namespace Car_Rental.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Cards_ID,Customers_ID,Cashback,Points,Payment")] Card card)
         {
+            
             if (id != card.Cards_ID)
             {
                 return NotFound();
@@ -172,6 +178,7 @@ namespace Car_Rental.Controllers
         // GET: Card/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            
             if (id == null)
             {
                 return NotFound();
@@ -192,6 +199,7 @@ namespace Car_Rental.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            
             var card = await _context.Cards.FindAsync(id);
             if (card != null)
             {

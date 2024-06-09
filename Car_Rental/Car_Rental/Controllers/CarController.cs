@@ -22,12 +22,14 @@ namespace Car_Rental.Controllers
         // GET: Car
         public async Task<IActionResult> Index()
         {
+            
             return View(await _context.Cars.ToListAsync());
         }
 
         // GET: Car/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            
             if (id == null)
             {
                 return NotFound();
@@ -47,6 +49,7 @@ namespace Car_Rental.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            
             return View();
         }
 
@@ -103,6 +106,7 @@ namespace Car_Rental.Controllers
         // GET: Car/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            
             if (id == null)
             {
                 return NotFound();
@@ -121,6 +125,7 @@ namespace Car_Rental.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Cars_ID,Brand,Model,Price,Availability")] Car car)
         {
+            
             if (id != car.Cars_ID)
             {
                 return NotFound();
@@ -152,6 +157,7 @@ namespace Car_Rental.Controllers
         // GET: Car/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+           
             if (id == null)
             {
                 return NotFound();
@@ -184,6 +190,7 @@ namespace Car_Rental.Controllers
 
         private bool CarExists(int id)
         {
+            
             return _context.Cars.Any(e => e.Cars_ID == id);
         }
     }

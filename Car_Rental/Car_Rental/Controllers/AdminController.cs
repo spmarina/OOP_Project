@@ -126,5 +126,14 @@ namespace Car_Rental.Controllers
             }
             return RedirectToAction("Index", "Admin");
         }
+
+        public async Task<IActionResult> Logout()
+        {
+            // Вызываем метод SignOutAsync для очистки аутентификационных кук
+            //await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            // Перенаправляем пользователя на главную страницу или на другую страницу
+            return RedirectToAction("Login", "Admin");
+        }
     }
 }

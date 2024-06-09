@@ -50,19 +50,72 @@ namespace Car_Rental.Controllers
         }
 
         // POST: Card/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Cards_ID,Customers_ID,Cashback,Points,Payment")] Card card)
+        public async Task<IActionResult> Create(string lastName, string firstName, string middleName, string phone, bool activeRent)
         {
+            var CreateCustomer = new Customer
+            {
+                LastName = lastName,
+                FirstName = firstName,
+                MiddleName = middleName,
+                Phone = phone,
+                ActiveRent = activeRent
+            };
+            char[] arr;
+            //Проверка фамилии
+            arr = lastName.ToCharArray();
+            foreach (char c in arr)
+            {
+                if (((c < 65) || (c > 90)) && ((c < 97) || (c > 122)))
+                {
+                    return View(CreateCustomer);
+                }
+
+            }
+            //Проверка имени
+            arr = firstName.ToCharArray();
+            foreach (char c in arr)
+            {
+                if (((c < 65) || (c > 90)) && ((c < 97) || (c > 122)))
+                {
+                    return View(CreateCustomer);
+                }
+
+            }
+            //Проверка отчества
+            arr = middleName.ToCharArray();
+            foreach (char c in arr)
+            {
+                if (((c < 65) || (c > 90)) && ((c < 97) || (c > 122)))
+                {
+                    return View(CreateCustomer);
+                }
+
+            }
+            //Проверка телефона
+            arr = phone.ToCharArray();
+            int k = 0;
+            foreach (char c in arr)
+            {
+                k++;
+                if ((c < 48) || (c > 57) || (k > 11))
+                {
+                    return View(CreateCustomer);
+                }
+            }
+            if (k < 11)
+            {
+                return View(CreateCustomer);
+            }
+            //Проферка True/False
             if (ModelState.IsValid)
             {
-                _context.Add(card);
+                _context.Add(CreateCustomer);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Create", "Customers");
             }
-            return View(card);
+            return View(CreateCustomer);
         }
 
         // GET: Card/Edit/5

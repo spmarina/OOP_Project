@@ -52,8 +52,6 @@ namespace Car_Rental.Controllers
         }
 
         // POST: Customers/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         public async Task<IActionResult> Create(string lastName, string firstName, string middleName, string phone, bool activeRent)
         {
@@ -116,12 +114,26 @@ namespace Car_Rental.Controllers
             {
                 _context.Add(CreateCustomer);
                 await _context.SaveChangesAsync();
+
+                CreateCardForCustomer(CreateCustomer.Customers_ID);
                 return RedirectToAction("Create", "Customers");
             }
             return View(CreateCustomer);
         }
 
+        public void CreateCardForCustomer(int customers_ID)
+        {
+            var CreateCard = new Card
+            {
+                Customers_ID = customers_ID,
+                Cashback = 0,
+                Points = 0,
+                Payment = 0,
+            };
 
+            _context.Add(CreateCard);
+            _context.SaveChangesAsync();
+        }
 
         // GET: Customers/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -140,8 +152,6 @@ namespace Car_Rental.Controllers
         }
 
         // POST: Customers/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Customers_ID,LastName,FirstName,MiddleName,Phone,ActiveRent")] Customer customer)

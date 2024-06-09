@@ -44,25 +44,59 @@ namespace Car_Rental.Controllers
         }
 
         // GET: Car/Create
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
         // POST: Car/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Cars_ID,Brand,Model,Price,Availability")] Car car)
+        public async Task<IActionResult> Create(string brand, string model, decimal price, bool availability)
         {
+            var CreateCar = new Car
+            {
+                Brand = brand,
+                Model = model,
+                Price = price,
+                Availability = availability
+            };
+            char[] arr;
+            //Проверка марки
+            arr = brand.ToCharArray();
+            foreach (char c in arr)
+            {
+                if (((c < 65) || (c > 90)) && ((c < 97) || (c > 122)))
+                {
+                    return View(CreateCar);
+                }
+
+            }
+            //Проверка модели
+            arr = model.ToCharArray();
+            foreach (char c in arr)
+            {
+                if (((c < 65) || (c > 90)) && ((c < 97) || (c > 122))&& ((c < 48) || (c > 57))&&(c!=32))
+                {
+                    return View(CreateCar);
+                }
+
+            }
+            //Проевкри стоимость
+            if (price <= 0 || price > 999999999)
+            {
+                return View(CreateCar);
+            }
+            
+            //Проферка True/False
             if (ModelState.IsValid)
             {
-                _context.Add(car);
+                _context.Add(CreateCar);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Car");
             }
-            return View(car);
+            return View(CreateCar);
         }
 
         // GET: Car/Edit/5
@@ -82,8 +116,6 @@ namespace Car_Rental.Controllers
         }
 
         // POST: Car/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Cars_ID,Brand,Model,Price,Availability")] Car car)

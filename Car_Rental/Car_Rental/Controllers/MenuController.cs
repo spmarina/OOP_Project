@@ -6,37 +6,44 @@ namespace Car_Rental.Controllers
     public class MenuController : Controller
     {
         // GET: MenuController
-        public ActionResult Index()
+        public ActionResult Index(string? returnUrl)
         {
+            ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
-        public ActionResult Customers()
+        public ActionResult Customers(string? returnUrl)
         {
-          return View();
+            ViewData["ReturnUrl"] = returnUrl;
+            return View();
         }
 
         // GET: MenuController/Details/5
-        public ActionResult Car()
+        public ActionResult Car(string? returnUrl)
         {
+            ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
 
         // GET: MenuController/Create
-        public ActionResult Rent()
+        public ActionResult Rent(string? returnUrl)
         {
+            ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
 
-        public ActionResult Discount()
+        public ActionResult Discount(string? returnUrl)
         {
+            ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
-        public ActionResult ServiceDate()
+        public ActionResult ServiceDate(string? returnUrl)
         {
+            ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
-        public ActionResult Contract()
+        public ActionResult Contract(string? returnUrl)
         {
+            ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
         // POST: MenuController/Create

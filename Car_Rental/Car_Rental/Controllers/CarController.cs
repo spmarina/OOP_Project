@@ -55,6 +55,7 @@ namespace Car_Rental.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(string brand, string model, decimal price, bool availability)
         {
+            
             var CreateCar = new Car
             {
                 Brand = brand,

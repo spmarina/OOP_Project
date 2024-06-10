@@ -1,0 +1,6 @@
+SELECT TOP (1000) [Cars_ID]
+      ,[Brand]
+      ,[Model]
+      ,[Price]
+      ,[Availability]
+  FROM [AutoRentDB].[dbo].[Cars]

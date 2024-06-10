@@ -103,7 +103,7 @@ namespace Car_Rental.Controllers
             return View(CreateCar);
         }
 
-        public async void createServiceDate(int car_id)
+        public  void createServiceDate(int car_id)
         {
             var newServiceDate = new ServiceDate
             {
@@ -112,7 +112,7 @@ namespace Car_Rental.Controllers
                 NextDate = DateTime.UtcNow.AddMonths(1),
             };
             _context.Add(newServiceDate);
-            await _context.SaveChangesAsync();
+             _context.SaveChangesAsync();
             
         }
 

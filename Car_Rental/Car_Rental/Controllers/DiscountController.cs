@@ -63,6 +63,12 @@ namespace Car_Rental.Controllers
             {
                 return RedirectToAction("Create", "Discount");
             }
+            var checkDiscount= await _context.Discounts.FirstOrDefaultAsync(x => x.Cars_ID == cars_ID);
+            if (checkDiscount != null)
+            {
+                return RedirectToAction("Create", "Discount");
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Add(createDiscount);

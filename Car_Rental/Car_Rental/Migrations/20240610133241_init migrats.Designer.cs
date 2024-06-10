@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Car_Rental.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240610000629_init")]
-    partial class init
+    [Migration("20240610133241_init migrats")]
+    partial class initmigrats
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -82,8 +82,8 @@ namespace Car_Rental.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Cards_ID"));
 
-                    b.Property<byte>("Cashback")
-                        .HasColumnType("tinyint");
+                    b.Property<int>("Cashback")
+                        .HasColumnType("int");
 
                     b.Property<int>("Customers_ID")
                         .HasColumnType("int");

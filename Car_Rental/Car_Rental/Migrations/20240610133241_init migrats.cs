@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Car_Rental.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class initmigrats : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -33,7 +33,7 @@ namespace Car_Rental.Migrations
                     Cards_ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Customers_ID = table.Column<int>(type: "int", nullable: false),
-                    Cashback = table.Column<byte>(type: "tinyint", nullable: false),
+                    Cashback = table.Column<int>(type: "int", nullable: false),
                     Points = table.Column<long>(type: "bigint", nullable: false),
                     Payment = table.Column<long>(type: "bigint", nullable: false)
                 },

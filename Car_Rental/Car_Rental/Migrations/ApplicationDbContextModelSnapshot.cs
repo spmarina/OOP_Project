@@ -54,18 +54,16 @@ namespace Car_Rental.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Cars_ID"));
 
-                    b.Property<bool>("Availability")
+                    b.Property<bool?>("Availability")
                         .HasColumnType("bit");
 
                     b.Property<string>("Brand")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Model")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Price")
+                    b.Property<decimal?>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Cars_ID");
@@ -81,17 +79,17 @@ namespace Car_Rental.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Cards_ID"));
 
-                    b.Property<int>("Cashback")
-                        .HasColumnType("int");
+                    b.Property<byte>("Cashback")
+                        .HasColumnType("tinyint");
 
                     b.Property<int>("Customers_ID")
                         .HasColumnType("int");
 
-                    b.Property<int>("Payment")
-                        .HasColumnType("int");
+                    b.Property<long>("Payment")
+                        .HasColumnType("bigint");
 
-                    b.Property<int>("Points")
-                        .HasColumnType("int");
+                    b.Property<long>("Points")
+                        .HasColumnType("bigint");
 
                     b.HasKey("Cards_ID");
 
@@ -114,6 +112,10 @@ namespace Car_Rental.Migrations
 
                     b.Property<int>("Customers_ID")
                         .HasColumnType("int");
+
+                    b.Property<string>("DocumentLink")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Number")
                         .HasColumnType("int");
@@ -166,8 +168,8 @@ namespace Car_Rental.Migrations
                     b.Property<int>("Cars_ID")
                         .HasColumnType("int");
 
-                    b.Property<int>("NewPrice")
-                        .HasColumnType("int");
+                    b.Property<byte>("NewPrice")
+                        .HasColumnType("tinyint");
 
                     b.HasKey("Discounts_ID");
 

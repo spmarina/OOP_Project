@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Car_Rental.Data;
 using Car_Rental.Models;
+using Microsoft.VisualBasic;
 
 namespace Car_Rental.Controllers
 {
@@ -46,9 +47,10 @@ namespace Car_Rental.Controllers
             }
             else
             {
+
                 if ((userCust.FirstName == firstName) && (userCust.MiddleName == middleName) && (userCust.Phone == phone))
                 {
-                    ;
+                    if (userCust.ActiveRent) { return RedirectToAction("Index", "Order"); } 
                 }
                 else
                 {
@@ -66,6 +68,8 @@ namespace Car_Rental.Controllers
             {
                 return RedirectToAction("Index", "Order");
             }
+            userCar.Availability = false;
+            await _context.SaveChangesAsync();
 
             //Создание аренды
             DateTime thisDay = DateTime.Today;
@@ -91,9 +95,10 @@ namespace Car_Rental.Controllers
                 Number=number,
                 CreateDate=thisDay,
                 Cards_ID=car_ID,
+                DocumentLink=documentLink,
             };
             _context.Add(userContract);
-            _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
 
             //Создание продажи для админа
             var userAdmin = _context.Admins.FirstOrDefault(a => a.CreateLogin == username);
@@ -108,9 +113,10 @@ namespace Car_Rental.Controllers
             {
                 discountCar = (int)userCar.Price * userDiscount.NewPrice/100;
             }
-            userAdmin.Sales += (int)userCar.Price - discountCar;
+            int days =  (lastDate.Month*30 +lastDate.Day)-(thisDay.Month*30+thisDay.Day);
+            userAdmin.Sales += ((int)userCar.Price - discountCar)*days;
             await _context.SaveChangesAsync();
-            return View();
+            return RedirectToAction("Index", "Menu");
         }
         public IActionResult Order()
         {

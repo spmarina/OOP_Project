@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Car_Rental.Migrations
 {
     /// <inheritdoc />
-    public partial class initmigr : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -33,9 +33,9 @@ namespace Car_Rental.Migrations
                     Cards_ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Customers_ID = table.Column<int>(type: "int", nullable: false),
-                    Cashback = table.Column<int>(type: "int", nullable: false),
-                    Points = table.Column<int>(type: "int", nullable: false),
-                    Payment = table.Column<int>(type: "int", nullable: false)
+                    Cashback = table.Column<byte>(type: "tinyint", nullable: false),
+                    Points = table.Column<long>(type: "bigint", nullable: false),
+                    Payment = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -48,10 +48,10 @@ namespace Car_Rental.Migrations
                 {
                     Cars_ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Brand = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Model = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Availability = table.Column<bool>(type: "bit", nullable: false)
+                    Brand = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Model = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    Availability = table.Column<bool>(type: "bit", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -67,7 +67,8 @@ namespace Car_Rental.Migrations
                     Customers_ID = table.Column<int>(type: "int", nullable: false),
                     Number = table.Column<int>(type: "int", nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Cards_ID = table.Column<int>(type: "int", nullable: false)
+                    Cards_ID = table.Column<int>(type: "int", nullable: false),
+                    DocumentLink = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -98,7 +99,7 @@ namespace Car_Rental.Migrations
                     Discounts_ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Cars_ID = table.Column<int>(type: "int", nullable: false),
-                    NewPrice = table.Column<int>(type: "int", nullable: false)
+                    NewPrice = table.Column<byte>(type: "tinyint", nullable: false)
                 },
                 constraints: table =>
                 {

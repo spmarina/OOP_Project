@@ -97,10 +97,24 @@ namespace Car_Rental.Controllers
             {
                 _context.Add(CreateCar);
                 await _context.SaveChangesAsync();
+                createServiceDate(CreateCar.Cars_ID);
                 return RedirectToAction("Index", "Car");
             }
             return View(CreateCar);
         }
+
+        public void createServiceDate(int car_id)
+        {
+            var newServiceDate = new ServiceDate
+            {
+                Cars_ID = car_id,
+                PreviousDate = DateTime.Now,
+                NextDate = DateTime.UtcNow.AddMonths(1),
+            };
+            _context.Add(newServiceDate);
+            _context.SaveChangesAsync();
+        }
+
 
         // GET: Car/Edit/5
         public async Task<IActionResult> Edit(int? id)

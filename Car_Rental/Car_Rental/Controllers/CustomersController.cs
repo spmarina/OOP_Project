@@ -19,7 +19,6 @@ namespace Car_Rental.Controllers
             _context = context;
         }
 
-        // GET: Customers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
@@ -44,14 +43,12 @@ namespace Car_Rental.Controllers
             return View(customer);
         }
 
-        // GET: Customers/Create
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Customers/Create
         [HttpPost]
         public async Task<IActionResult> Create(string lastName, string firstName, string middleName, string phone, bool activeRent)
         {
@@ -116,26 +113,29 @@ namespace Car_Rental.Controllers
                 await _context.SaveChangesAsync();
 
                 CreateCardForCustomer(CreateCustomer.Customers_ID);
+                
                 return RedirectToAction("Index", "Customers");
             }
             return View(CreateCustomer);
         }
 
-        public void CreateCardForCustomer(int customers_ID)
+        public async void CreateCardForCustomer(int customers_ID)
         {
+            Random r = new Random();
+            int rInt = r.Next(0, 25);
             var CreateCard = new Card
             {
                 Customers_ID = customers_ID,
-                Cashback = 0,
+                Cashback = rInt,
                 Points = 0,
                 Payment = 0,
             };
 
             _context.Add(CreateCard);
-            _context.SaveChangesAsync();
+           await _context.SaveChangesAsync();
         }
+        
 
-        // GET: Customers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -151,7 +151,6 @@ namespace Car_Rental.Controllers
             return View(customer);
         }
 
-        // POST: Customers/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Customers_ID,LastName,FirstName,MiddleName,Phone,ActiveRent")] Customer customer)
@@ -184,7 +183,6 @@ namespace Car_Rental.Controllers
             return View(customer);
         }
 
-        // GET: Customers/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -202,7 +200,6 @@ namespace Car_Rental.Controllers
             return View(customer);
         }
 
-        // POST: Customers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

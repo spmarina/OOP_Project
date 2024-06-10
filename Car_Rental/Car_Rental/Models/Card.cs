@@ -9,7 +9,7 @@ namespace Car_Rental.Models
         public int Cards_ID { get; set; }
         [ForeignKey("Customer")]
         public int Customers_ID { get; set; }  //Customer
-        public byte Cashback {  get; set; }
+        public int Cashback {  get; set; }
         public long Points {  get; set; }
         public long Payment { get; set;}
     }

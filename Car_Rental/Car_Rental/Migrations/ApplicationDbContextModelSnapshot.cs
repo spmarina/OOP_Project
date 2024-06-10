@@ -79,8 +79,8 @@ namespace Car_Rental.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Cards_ID"));
 
-                    b.Property<byte>("Cashback")
-                        .HasColumnType("tinyint");
+                    b.Property<int>("Cashback")
+                        .HasColumnType("int");
 
                     b.Property<int>("Customers_ID")
                         .HasColumnType("int");

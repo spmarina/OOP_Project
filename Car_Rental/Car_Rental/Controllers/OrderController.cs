@@ -80,6 +80,10 @@ namespace Car_Rental.Controllers
                 FirstDate=thisDay,
                 LastDate=lastDate,
             };
+            if (lastDate < thisDay)
+            {
+                return RedirectToAction("Index", "Order");
+            }
             _context.Add(userRent);
             await _context.SaveChangesAsync();
 

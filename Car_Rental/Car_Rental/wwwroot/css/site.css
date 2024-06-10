@@ -18,5 +18,9 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    background-color: silver;
+    margin-bottom: 60px;
+    background: url(image/background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }

@@ -59,7 +59,7 @@ create table Contracts
 (
 	Contracts_ID int Primary key identity,
 	Customers_ID int foreign key references Customers(Customers_ID),
-	Number BIGINT not null,
+	Number int not null,
 	CreateDate datetime not null,
 	Cards_ID int foreign key references Cards(Cards_ID),
 )

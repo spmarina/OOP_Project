@@ -5,20 +5,16 @@
       "PackagePath": "staticwebassets\\Car_Rental.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\wwwroot\\Images\\background.jpg",
-      "PackagePath": "staticwebassets\\Images\\background.jpg"
-    },
-    {
-      "Id": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\wwwroot\\Images\\kot.png",
-      "PackagePath": "staticwebassets\\Images\\kot.png"
-    },
-    {
       "Id": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\wwwroot\\images\\background.jpg",
+      "PackagePath": "staticwebassets\\images\\background.jpg"
     },
     {
       "Id": "C:\\Users\\danil\\Desktop\\OOP_Project\\Car_Rental\\Car_Rental\\wwwroot\\js\\site.js",

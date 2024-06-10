@@ -11,6 +11,9 @@
     <title>Create Customer</title>
     <style>
         body {
+            background: url(images/background.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             padding: 20px;
@@ -87,7 +90,7 @@
                 <label class="control-label">Введите пароль</label>
                 <input class="form-control" name="password" />
             </div>
-            <button type="submit" class="form-button">Создать</button>
+            <button type="submit" class="btn-primary">Создать</button>
         </form>
         <a href="@Url.Action("db", "Admin")">Вернуться к списку</a>
     </div>

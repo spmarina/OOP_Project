@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Views\Menu\background.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Views\Menu\background.jpg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="BCrypt.Net" Version="0.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.6">
@@ -22,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\Images\kot.png" />
+    <None Include="wwwroot\images\kot.png" />
   </ItemGroup>
 
 </Project>

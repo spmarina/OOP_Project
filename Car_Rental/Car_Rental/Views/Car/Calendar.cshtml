@@ -1,0 +1,182 @@
+﻿@model Car_Rental.Models.Car
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Календарь бронирования</title>
+    <!-- Подключение jQuery через CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Подключение стилей FullCalendar через CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" rel="stylesheet">
+    <!-- Подключение Moment.js через CDN (требуется для FullCalendar) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <!-- Подключение FullCalendar через CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="date"],
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"],
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+            input[type="submit"]:hover,
+            button:hover {
+                background-color: #45a049;
+            }
+
+        .calendar-container {
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        .calendar {
+            margin-bottom: 40px;
+            display: none; /* Скрыть все календари по умолчанию */
+        }
+
+            .calendar.active {
+                display: block; /* Показать активный календарь */
+            }
+
+        .small-calendar {
+            transform: scale(0.5); /* Масштабирование календаря */
+            transform-origin: top left; /* Точка начала масштабирования */
+        }
+    </style>
+</head>
+<body>
+    <h1>Добавить бронирование автомобиля</h1>
+    <form id="booking-form">
+        <label for="car-id">ID автомобиля:</label>
+        <input type="text" id="car-id" name="car-id" required>
+        <label for="start-date">Дата начала бронирования:</label>
+        <input type="date" id="start-date" name="start-date" required>
+        <label for="end-date">Дата окончания бронирования:</label>
+        <input type="date" id="end-date" name="end-date" required>
+        <input type="submit" value="Добавить бронирование">
+    </form>
+
+    <h2>Прошлые бронирования</h2>
+    <div>
+        <label for="search-car-id">Введите ID автомобиля для просмотра бронирований:</label>
+        <input type="text" id="search-car-id" name="search-car-id">
+        <button id="search-button">Показать календарь</button>
+    </div>
+    <div id="calendars" class="calendar-container"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const calendarsContainer = document.getElementById('calendars');
+            loadBookings();
+
+            document.getElementById('booking-form').addEventListener('submit', function (e) {
+                e.preventDefault();
+                const carId = document.getElementById('car-id').value;
+                const startDate = document.getElementById('start-date').value;
+                const endDate = document.getElementById('end-date').value;
+
+                const newBooking = { carId, startDate, endDate };
+                const bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+                bookings.push(newBooking);
+                localStorage.setItem('bookings', JSON.stringify(bookings));
+
+                document.getElementById('booking-form').reset();
+                loadBookings();
+            });
+
+            document.getElementById('search-button').addEventListener('click', function () {
+                const searchCarId = document.getElementById('search-car-id').value;
+                showCalendar(searchCarId);
+            });
+
+            function loadBookings() {
+                calendarsContainer.innerHTML = '';
+                const bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+                const carBookings = {};
+
+                bookings.forEach(booking => {
+                    if (!carBookings[booking.carId]) {
+                        carBookings[booking.carId] = [];
+                    }
+                    carBookings[booking.carId].push({
+                        title: `Бронь ${booking.carId}`,
+                        start: booking.startDate,
+                        end: booking.endDate
+                    });
+                });
+
+                Object.keys(carBookings).forEach(carId => {
+                    const calendarDiv = document.createElement('div');
+                    calendarDiv.classList.add('calendar', 'small-calendar');
+                    calendarDiv.id = `calendar-${carId}`;
+                    calendarsContainer.appendChild(calendarDiv);
+
+                    $(calendarDiv).fullCalendar({
+                        header: {
+                            left: 'prev,next today',
+                            center: 'title',
+                            right: 'month,agendaWeek,agendaDay'
+                        },
+                        defaultView: 'month',
+                        editable: false,
+                        events: carBookings[carId]
+                    });
+                });
+            }
+
+            function showCalendar(carId) {
+                // Скрываем все календари
+                document.querySelectorAll('.calendar').forEach(cal => cal.classList.remove('active'));
+
+                // Показываем соответствующий календарь
+                const calendar = document.getElementById(`calendar-${carId}`);
+                if (calendar) {
+                    calendar.classList.add('active');
+                } else {
+                    alert(`Календарь для автомобиля ${carId} не найден.`);
+                }
+            }
+        });
+    </script>
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+</body>
+</html>

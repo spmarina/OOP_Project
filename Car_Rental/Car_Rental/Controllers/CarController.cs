@@ -24,6 +24,15 @@ namespace Car_Rental.Controllers
         {
             
             return View(await _context.Cars.ToListAsync());
+
+
+        }
+
+        // GET: Customers/Calendar
+        [HttpGet]
+        public IActionResult Calendar()
+        {
+            return View();
         }
 
         // GET: Car/Details/5

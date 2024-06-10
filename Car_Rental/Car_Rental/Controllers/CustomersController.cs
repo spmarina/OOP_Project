@@ -119,7 +119,7 @@ namespace Car_Rental.Controllers
             return View(CreateCustomer);
         }
 
-        public async void CreateCardForCustomer(int customers_ID)
+        public void CreateCardForCustomer(int customers_ID)
         {
             Random r = new Random();
             int rInt = r.Next(0, 25);
@@ -132,7 +132,7 @@ namespace Car_Rental.Controllers
             };
 
             _context.Add(CreateCard);
-           await _context.SaveChangesAsync();
+            _context.SaveChangesAsync();
         }
         
 

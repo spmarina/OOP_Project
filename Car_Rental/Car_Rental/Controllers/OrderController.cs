@@ -120,6 +120,7 @@ namespace Car_Rental.Controllers
             int days =  (lastDate.Month*30 +lastDate.Day)-(thisDay.Month*30+thisDay.Day);
             userAdmin.Sales += ((int)userCar.Price - discountCar)*days;
             await _context.SaveChangesAsync();
+
             return RedirectToAction("Index", "Menu");
         }
         public IActionResult Order()

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Car_Rental.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240610133241_init migrats")]
+    [Migration("20240610160527_init migrats")]
     partial class initmigrats
     {
         /// <inheritdoc />
@@ -57,7 +57,7 @@ namespace Car_Rental.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Cars_ID"));
 
-                    b.Property<bool?>("Availability")
+                    b.Property<bool>("Availability")
                         .HasColumnType("bit");
 
                     b.Property<string>("Brand")
@@ -170,6 +170,10 @@ namespace Car_Rental.Migrations
 
                     b.Property<int>("Cars_ID")
                         .HasColumnType("int");
+
+                    b.Property<string>("Model")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<byte>("NewPrice")
                         .HasColumnType("tinyint");

@@ -51,7 +51,7 @@ namespace Car_Rental.Migrations
                     Brand = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Model = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    Availability = table.Column<bool>(type: "bit", nullable: true)
+                    Availability = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -99,7 +99,8 @@ namespace Car_Rental.Migrations
                     Discounts_ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Cars_ID = table.Column<int>(type: "int", nullable: false),
-                    NewPrice = table.Column<byte>(type: "tinyint", nullable: false)
+                    NewPrice = table.Column<byte>(type: "tinyint", nullable: false),
+                    Model = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

@@ -54,75 +54,23 @@ namespace Car_Rental.Controllers
 
         // POST: Card/Create
         [HttpPost]
-        public async Task<IActionResult> Create(string lastName, string firstName, string middleName, string phone, bool activeRent)
+        public void Create(int customers_ID)
         {
-            
-            var CreateCustomer = new Customer
+
+
+            Random r = new Random();
+            int rInt = r.Next(0, 25);
+            var CreateCard = new Card
             {
-                LastName = lastName,
-                FirstName = firstName,
-                MiddleName = middleName,
-                Phone = phone,
-                ActiveRent = activeRent
+                Customers_ID = customers_ID,
+                Cashback = rInt,
+                Points = 0,
+                Payment = 0,
             };
-            char[] arr;
-            //Проверка фамилии
-            arr = lastName.ToCharArray();
-            foreach (char c in arr)
-            {
-                if (((c < 65) || (c > 90)) && ((c < 97) || (c > 122)))
-                {
-                    return View(CreateCustomer);
-                }
-
-            }
-            //Проверка имени
-            arr = firstName.ToCharArray();
-            foreach (char c in arr)
-            {
-                if (((c < 65) || (c > 90)) && ((c < 97) || (c > 122)))
-                {
-                    return View(CreateCustomer);
-                }
-
-            }
-            //Проверка отчества
-            arr = middleName.ToCharArray();
-            foreach (char c in arr)
-            {
-                if (((c < 65) || (c > 90)) && ((c < 97) || (c > 122)))
-                {
-                    return View(CreateCustomer);
-                }
-
-            }
-            //Проверка телефона
-            arr = phone.ToCharArray();
-            int k = 0;
-            foreach (char c in arr)
-            {
-                k++;
-                if ((c < 48) || (c > 57) || (k > 11))
-                {
-                    return View(CreateCustomer);
-                }
-            }
-            if (k < 11)
-            {
-                return View(CreateCustomer);
-            }
-            //Проферка True/False
-            if (ModelState.IsValid)
-            {
-                _context.Add(CreateCustomer);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Create", "Customers");
-            }
-            return View(CreateCustomer);
         }
 
-        // GET: Card/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+            // GET: Card/Edit/5
+            public async Task<IActionResult> Edit(int? id)
         {
             
             if (id == null)

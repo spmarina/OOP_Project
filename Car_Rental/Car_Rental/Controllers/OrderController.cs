@@ -22,6 +22,56 @@ namespace Car_Rental.Controllers
         [HttpPost]
         public async Task<IActionResult> Order(string lastName, string firstName, string middleName, string phone, int car_ID, DateTime lastDate, int number, string documentLink, string username)
         {
+            char[] arr;
+            //Проверка фамилии
+            arr = lastName.ToCharArray();
+            foreach (char c in arr)
+            {
+                if (((c < 65) || (c > 90)) && ((c < 97) || (c > 122)))
+                {
+
+                    return RedirectToAction("Index", "Order");
+                }
+
+            }
+            //Проверка имени
+            arr = firstName.ToCharArray();
+            foreach (char c in arr)
+            {
+                if (((c < 65) || (c > 90)) && ((c < 97) || (c > 122)))
+                {
+
+                    return RedirectToAction("Index", "Order");
+                }
+
+            }
+            //Проверка отчества
+            arr = middleName.ToCharArray();
+            foreach (char c in arr)
+            {
+                if (((c < 65) || (c > 90)) && ((c < 97) || (c > 122)))
+                {
+
+                    return RedirectToAction("Index", "Order");
+                }
+
+            }
+            //Проверка телефона
+            arr = phone.ToCharArray();
+            int k = 0;
+            foreach (char c in arr)
+            {
+                k++;
+                if ((c < 48) || (c > 57) || (k > 11))
+                {
+
+                    return RedirectToAction("Index", "Order");
+                }
+            }
+            if (k < 11)
+            {
+                return RedirectToAction("Index", "Order");
+            }
             //Проверка на покупателя
             var createOrderCustomers = new Customer
             {

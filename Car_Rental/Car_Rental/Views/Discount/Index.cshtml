@@ -90,6 +90,7 @@
                 <tr>
                     <th>ID скидки</th>
                     <th>ID машины</th>
+                    <th>Модель</th>
                     <th>Размер скидки (в %)</th>
                 </tr>
             </thead>
@@ -99,6 +100,7 @@
                     <tr>
                         <td>@Html.DisplayFor(modelItem => item.Discounts_ID)</td>
                         <td>@Html.DisplayFor(modelItem => item.Cars_ID)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Model)</td>
                         <td>@Html.DisplayFor(modelItem => item.NewPrice)</td>
                     </tr>
                 }

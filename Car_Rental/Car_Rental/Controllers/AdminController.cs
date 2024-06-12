@@ -135,7 +135,7 @@ namespace Car_Rental.Controllers
                     var checkuser = await _context.Admins.FirstOrDefaultAsync(x => x.CreateLogin == username);  
                     if (checkuser != null)
                     {
-                        if (username == "Michail" && password == "12345678")
+                        if (username == "Vasiliy" && password == "100")
                             return RedirectToAction("HRMenu", "Menu");
                         else
                         if (checkuser.CreatePassword == password)

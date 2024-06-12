@@ -10,5 +10,7 @@ namespace Car_Rental.Models
         [ForeignKey ("Car")]
         public int Cars_ID { get; set; }    //Car
         public byte NewPrice { get; set; }
+        [ForeignKey("Car")]
+        public string Model { get; set; }
     }
 }

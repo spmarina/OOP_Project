@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Car_Rental.Data;
 using Car_Rental.Models;
+using Car_Rental.Controllers;
 
 namespace Car_Rental.Controllers
 {
@@ -111,7 +112,6 @@ namespace Car_Rental.Controllers
             {
                 _context.Add(CreateCustomer);
                 await _context.SaveChangesAsync();
-
                 CreateCardForCustomer(CreateCustomer.Customers_ID);
                 
                 return RedirectToAction("Index", "Customers");

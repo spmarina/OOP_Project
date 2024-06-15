@@ -30,7 +30,7 @@ namespace Car_Rental.Controllers
                 if (((c < 65) || (c > 90)) && ((c < 97) || (c > 122)))
                 {
 
-                    return RedirectToAction("Index", "Order");
+                    return RedirectToAction("Error", "Order");
                 }
 
             }
@@ -41,7 +41,7 @@ namespace Car_Rental.Controllers
                 if (((c < 65) || (c > 90)) && ((c < 97) || (c > 122)))
                 {
 
-                    return RedirectToAction("Index", "Order");
+                    return RedirectToAction("Error", "Order");
                 }
 
             }
@@ -52,7 +52,7 @@ namespace Car_Rental.Controllers
                 if (((c < 65) || (c > 90)) && ((c < 97) || (c > 122)))
                 {
 
-                    return RedirectToAction("Index", "Order");
+                    return RedirectToAction("Error", "Order");
                 }
 
             }
@@ -65,12 +65,12 @@ namespace Car_Rental.Controllers
                 if ((c < 48) || (c > 57) || (k > 11))
                 {
 
-                    return RedirectToAction("Index", "Order");
+                    return RedirectToAction("Error", "Order");
                 }
             }
             if (k < 11)
             {
-                return RedirectToAction("Index", "Order");
+                return RedirectToAction("Error", "Order");
             }
             //Проверка на покупателя
             var createOrderCustomers = new Customer
@@ -112,11 +112,11 @@ namespace Car_Rental.Controllers
             var userCar=_context.Cars.FirstOrDefault(c=>c.Cars_ID==car_ID);
             if(userCar == null)
             {
-                return RedirectToAction("Index", "Order");
+                return RedirectToAction("Error", "Order");
             }
             if (userCar.Availability == false)
             {
-                return RedirectToAction("Index", "Order");
+                return RedirectToAction("Error", "Order");
             }
             userCar.Availability = false;
             await _context.SaveChangesAsync();
@@ -132,7 +132,7 @@ namespace Car_Rental.Controllers
             };
             if (lastDate < thisDay)
             {
-                return RedirectToAction("Index", "Order");
+                return RedirectToAction("Error", "Order");
             }
             _context.Add(userRent);
             await _context.SaveChangesAsync();
@@ -141,7 +141,7 @@ namespace Car_Rental.Controllers
             var checkcontract = _context.Contracts.FirstOrDefault(n => n.Number == number);
             if (checkcontract != null)
             {
-                return RedirectToAction("Index", "Order");
+                return RedirectToAction("Error", "Order");
             }
             var userContract = new Contract
             {
@@ -158,7 +158,7 @@ namespace Car_Rental.Controllers
             var userAdmin = _context.Admins.FirstOrDefault(a => a.CreateLogin == username);
             if (userAdmin == null)
             {
-                return RedirectToAction("Index", "Order");
+                return RedirectToAction("Error", "Order");
             }
 
             var userDiscount = _context.Discounts.FirstOrDefault(d=>d.Cars_ID==car_ID);     //для проверки скидки
@@ -174,6 +174,10 @@ namespace Car_Rental.Controllers
             return RedirectToAction("Index", "Menu");
         }
         public IActionResult Order()
+        {
+            return View();
+        }
+        public IActionResult Error()
         {
             return View();
         }

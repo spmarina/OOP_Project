@@ -10,13 +10,14 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            display: flex;
+            display: block;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
             background-color: gray;
             padding: 20px;
+            flex-wrap: wrap;
         }
 
         .container {
@@ -25,29 +26,35 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-        }
-
-        .option {
-            padding: 10px;
-            margin: 10px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            cursor: pointer;
-            background-color: #454142;
-            color: white;
-            font-size: 18px;
-            text-decoration: none;
+            color: red;
             display: block;
         }
 
-            .option:hover {
+        .create-button {
+            display: inline-block;
+            text-align: center;
+            padding: 5px 10px;
+            background-color: #454142;
+            color: white;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+            .create-button:hover {
                 background-color: #454142;
             }
+
     </style>
 </head>
 <body>
+    <p>
+        <a class="create-button" onclick="history.back();">Назад</a>
+    </p>
     <div class="container">
-        <a href="@Url.Action("db", "Admin")" class="option">Администраторы</a>
+
+        <p>ОШИБКА! Данный логин занят.</p>
     </div>
 </body>
 </html>

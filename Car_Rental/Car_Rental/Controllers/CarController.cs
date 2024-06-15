@@ -53,7 +53,10 @@ namespace Car_Rental.Controllers
 
             return View(car);
         }
-
+        public IActionResult Error()
+        {
+            return View();
+        }
         // GET: Car/Create
         [HttpGet]
         public IActionResult Create()
@@ -81,7 +84,7 @@ namespace Car_Rental.Controllers
             {
                 if (((c < 65) || (c > 90)) && ((c < 97) || (c > 122)))
                 {
-                    return View(CreateCar);
+                    return RedirectToAction("Error", "Car"); ;
                 }
 
             }
@@ -91,14 +94,14 @@ namespace Car_Rental.Controllers
             {
                 if (((c < 65) || (c > 90)) && ((c < 97) || (c > 122))&& ((c < 48) || (c > 57))&&(c!=32))
                 {
-                    return View(CreateCar);
+                    return RedirectToAction("Error", "Car"); ;
                 }
 
             }
             //Проевкри стоимость
             if (price <= 0 || price > 999999999)
             {
-                return View(CreateCar);
+                return RedirectToAction("Error", "Car");
             }
             
             //Проферка True/False
@@ -109,7 +112,7 @@ namespace Car_Rental.Controllers
                 createServiceDate(CreateCar.Cars_ID);
                 return RedirectToAction("Index", "Car");
             }
-            return View(CreateCar);
+            return RedirectToAction("Error", "Car");
         }
 
         public  void createServiceDate(int car_id)

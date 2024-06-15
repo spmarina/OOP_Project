@@ -6,17 +6,18 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Выбор функции</title>
+    <title>ОШИБКА</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            display: flex;
+            display: block;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
             background-color: gray;
             padding: 20px;
+            flex-wrap: wrap;
         }
 
         .container {
@@ -25,29 +26,35 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
+            color: red;
+            display:block;
         }
 
-        .option {
-            padding: 10px;
-            margin: 10px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            cursor: pointer;
+        .create-button {
+            display:inline-block;
+            text-align: center;
+            padding: 5px 10px;
             background-color: #454142;
             color: white;
-            font-size: 18px;
+            border-radius: 5px;
+            margin-bottom: 20px;
             text-decoration: none;
-            display: block;
+            cursor:pointer;
         }
 
-            .option:hover {
+            .create-button:hover {
                 background-color: #454142;
             }
+
     </style>
 </head>
 <body>
+    <p>
+        <a class="create-button" onclick="history.back();">Назад</a>
+    </p>
     <div class="container">
-        <a href="@Url.Action("db", "Admin")" class="option">Администраторы</a>
+        
+        <p>ОШИБКА! Проверьте правильность введенных данных</p>
     </div>
 </body>
 </html>

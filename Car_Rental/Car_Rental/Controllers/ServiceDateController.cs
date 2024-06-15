@@ -64,7 +64,7 @@ namespace Car_Rental.Controllers
             var checkcar = await _context.Cars.FirstOrDefaultAsync(x => x.Cars_ID == cars_ID);
             if (checkcar == null)
             {
-                return RedirectToAction("Create", "ServiceDate");
+                return RedirectToAction("Error", "ServiceDate");
             }
             if (ModelState.IsValid)
             {
@@ -72,7 +72,11 @@ namespace Car_Rental.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index", "ServiceDate");
             }
-            return View(createServiceDate);
+            return RedirectToAction("Error", "ServiceDate") ;
+        }
+        public IActionResult Error()
+        {
+            return View();
         }
 
         // GET: ServiceDate/Edit/5

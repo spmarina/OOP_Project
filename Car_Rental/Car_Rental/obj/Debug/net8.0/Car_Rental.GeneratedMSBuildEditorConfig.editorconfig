@@ -50,24 +50,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Admin/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Admin/db.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cZGIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Admin/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGVsZXRlLmNzaHRtbA==
+[C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Admin/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Admin/Error1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRXJyb3IxLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Admin/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Admin/Register.cshtml]
@@ -76,10 +72,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Card/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyZFxDcmVhdGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Card/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyZFxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Card/Details.cshtml]
@@ -102,16 +94,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Car/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyXERlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Car/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Car/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Car/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FyXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Car/Index.cshtml]
@@ -122,16 +114,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhY3RcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Contract/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhY3RcRGVsZXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Contract/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhY3RcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Contract/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhY3RcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Contract/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhY3RcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Contract/Index.cshtml]
@@ -142,16 +134,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Customers/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJzXERlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Customers/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Customers/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Customers/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJzXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Customers/Index.cshtml]
@@ -162,12 +154,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzY291bnRcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Discount/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzY291bnRcRGVsZXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Discount/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzY291bnRcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Discount/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzY291bnRcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Discount/Index.cshtml]
@@ -182,16 +174,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVudVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Order/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Order/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Rent/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVudFxDcmVhdGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Rent/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVudFxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Rent/Details.cshtml]
@@ -202,6 +194,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVudFxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Rent/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVudFxFcnJvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/Rent/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVudFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -210,16 +206,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljZURhdGVcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/ServiceDate/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljZURhdGVcRGVsZXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/ServiceDate/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljZURhdGVcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/ServiceDate/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljZURhdGVcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/ServiceDate/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2VydmljZURhdGVcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/danil/Desktop/OOP_Project/Car_Rental/Car_Rental/Views/ServiceDate/Index.cshtml]

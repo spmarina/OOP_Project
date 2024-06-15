@@ -38,6 +38,14 @@ namespace Car_Rental.Controllers
         {
             return View();
         }
+        public IActionResult Error()
+        {
+            return View();
+        }
+        public IActionResult Error1()
+        {
+            return View();
+        }
         //REGISTER
 
         [HttpPost]
@@ -48,7 +56,7 @@ namespace Car_Rental.Controllers
             if (isUserExists != null)
             {
                 ModelState.AddModelError("", "Пользователь с таким Логином уже существует");
-                return RedirectToAction("Register", "Admin");
+                return RedirectToAction("Error1", "Admin");
             }
             var newUser = new Admin
             {
@@ -146,7 +154,7 @@ namespace Car_Rental.Controllers
                 }
                 
             }
-            return RedirectToAction("Index", "Admin");
+            return RedirectToAction("Error", "Admin");
         }
 
         public async Task<IActionResult> Logout()

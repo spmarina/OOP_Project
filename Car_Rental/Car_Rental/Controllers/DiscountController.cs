@@ -62,7 +62,7 @@ namespace Car_Rental.Controllers
             var checkcar = await _context.Cars.FirstOrDefaultAsync(x => x.Cars_ID == cars_ID);
             if(checkcar == null)
             {
-                return RedirectToAction("Create", "Discount");
+                return RedirectToAction("Error", "Discount");
             }
             else
             {
@@ -71,7 +71,7 @@ namespace Car_Rental.Controllers
             var checkDiscount= await _context.Discounts.FirstOrDefaultAsync(x => x.Cars_ID == cars_ID);
             if (checkDiscount != null)
             {
-                return RedirectToAction("Create", "Discount");
+                return RedirectToAction("Error", "Discount");
             }
 
             if (ModelState.IsValid)
@@ -80,9 +80,12 @@ namespace Car_Rental.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index", "Discount");
             }
-            return View(createDiscount);
+            return RedirectToAction("Error", "Discount");
         }
-
+        public IActionResult Error()
+        {
+            return View();
+        }
         // GET: Discount/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {

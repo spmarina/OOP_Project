@@ -68,7 +68,7 @@ namespace Car_Rental.Controllers
             {
                 if (((c < 65) || (c > 90)) && ((c < 97) || (c > 122)))
                 {
-                    return View(CreateCustomer);
+                    return RedirectToAction("Error", "Customers");
                 }
 
             }
@@ -78,7 +78,7 @@ namespace Car_Rental.Controllers
             {
                 if (((c < 65) || (c > 90)) && ((c < 97) || (c > 122)))
                 {
-                    return View(CreateCustomer);
+                    return RedirectToAction("Error", "Customers");
                 }
 
             }
@@ -88,7 +88,7 @@ namespace Car_Rental.Controllers
             {
                 if (((c < 65) || (c > 90)) && ((c < 97) || (c > 122)))
                 {
-                    return View(CreateCustomer);
+                    return RedirectToAction("Error", "Customers");
                 }
 
             }
@@ -100,12 +100,12 @@ namespace Car_Rental.Controllers
                 k++;
                 if ((c < 48) || (c > 57)||(k>11))
                 {
-                    return View(CreateCustomer);
+                    return RedirectToAction("Error", "Customers");
                 }
             }
             if (k < 11)
             {
-                return View(CreateCustomer);
+                return RedirectToAction("Error", "Customers");
             }
             //Проферка True/False
             if (ModelState.IsValid)
@@ -116,9 +116,12 @@ namespace Car_Rental.Controllers
                 
                 return RedirectToAction("Index", "Customers");
             }
-            return View(CreateCustomer);
+            return RedirectToAction("Error", "Customers");
         }
-
+        public IActionResult Error()
+        {
+            return View();
+        }
         public void CreateCardForCustomer(int customers_ID)
         {
             Random r = new Random();

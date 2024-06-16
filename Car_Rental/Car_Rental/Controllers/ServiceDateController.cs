@@ -22,26 +22,14 @@ namespace Car_Rental.Controllers
         // GET: ServiceDate
         public async Task<IActionResult> Index()
         {
+            var currUser = new CurrentAdmin();
+            if (CurrentAdmin.id == 0)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             return View(await _context.ServicesDates.ToListAsync());
         }
 
-        // GET: ServiceDate/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var serviceDate = await _context.ServicesDates
-                .FirstOrDefaultAsync(m => m.ServiceDate_ID == id);
-            if (serviceDate == null)
-            {
-                return NotFound();
-            }
-
-            return View(serviceDate);
-        }
 
         // GET: ServiceDate/Create
         public IActionResult Create()
@@ -49,12 +37,15 @@ namespace Car_Rental.Controllers
             return View();
         }
 
-        // POST: ServiceDate/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         public async Task<IActionResult> Create(int cars_ID, DateTime PreviousDate, DateTime NextDate)
         {
+            var currUser = new CurrentAdmin();
+            if (CurrentAdmin.id == 0)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             var createServiceDate = new ServiceDate
             {
                 Cars_ID = cars_ID,
@@ -77,95 +68,6 @@ namespace Car_Rental.Controllers
         public IActionResult Error()
         {
             return View();
-        }
-
-        // GET: ServiceDate/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var serviceDate = await _context.ServicesDates.FindAsync(id);
-            if (serviceDate == null)
-            {
-                return NotFound();
-            }
-            return View(serviceDate);
-        }
-
-        // POST: ServiceDate/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ServiceDate_ID,Cars_ID,PreviousDate,NextDate")] ServiceDate serviceDate)
-        {
-            if (id != serviceDate.ServiceDate_ID)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(serviceDate);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ServiceDateExists(serviceDate.ServiceDate_ID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(serviceDate);
-        }
-
-        // GET: ServiceDate/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var serviceDate = await _context.ServicesDates
-                .FirstOrDefaultAsync(m => m.ServiceDate_ID == id);
-            if (serviceDate == null)
-            {
-                return NotFound();
-            }
-
-            return View(serviceDate);
-        }
-
-        // POST: ServiceDate/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var serviceDate = await _context.ServicesDates.FindAsync(id);
-            if (serviceDate != null)
-            {
-                _context.ServicesDates.Remove(serviceDate);
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool ServiceDateExists(int id)
-        {
-            return _context.ServicesDates.Any(e => e.ServiceDate_ID == id);
         }
     }
 }

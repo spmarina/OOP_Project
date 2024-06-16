@@ -1,8 +1,18 @@
-﻿namespace Car_Rental.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Car_Rental.Models
 {
     public class CurrentAdmin
     {
 
-        public static Admin user { get; set; }
+        public static int id = 0;
+        public CurrentAdmin(int ID)
+        {
+            id= ID;
+        }
+        public CurrentAdmin()
+        {
+            ;
+        }
     }
 }

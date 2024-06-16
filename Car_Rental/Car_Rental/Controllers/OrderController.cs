@@ -13,6 +13,11 @@ namespace Car_Rental.Controllers
         private readonly ApplicationDbContext _context;
         public IActionResult Index()
         {
+            var currUser = new CurrentAdmin();
+            if (CurrentAdmin.id == 0)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             return View();
         }
         public OrderController(ApplicationDbContext context)
@@ -22,6 +27,11 @@ namespace Car_Rental.Controllers
         [HttpPost]
         public async Task<IActionResult> Order(string lastName, string firstName, string middleName, string phone, int car_ID, DateTime lastDate, int number, string documentLink, string username)
         {
+            var currUser = new CurrentAdmin();
+            if (CurrentAdmin.id == 0)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             char[] arr;
             //Проверка фамилии
             arr = lastName.ToCharArray();
@@ -175,10 +185,20 @@ namespace Car_Rental.Controllers
         }
         public IActionResult Order()
         {
+            var currUser = new CurrentAdmin();
+            if (CurrentAdmin.id == 0)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             return View();
         }
         public IActionResult Error()
         {
+            var currUser = new CurrentAdmin();
+            if (CurrentAdmin.id == 0)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             return View();
         }
     }

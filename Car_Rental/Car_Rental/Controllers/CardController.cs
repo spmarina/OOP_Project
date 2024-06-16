@@ -23,7 +23,11 @@ namespace Car_Rental.Controllers
         // GET: Card
         public async Task<IActionResult> Index()
         {
-           
+            var currUser = new CurrentAdmin();
+            if (CurrentAdmin.id == 0)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             return View(await _context.Cards.ToListAsync());
         }
 
@@ -48,7 +52,11 @@ namespace Car_Rental.Controllers
         // GET: Card/Create
         public IActionResult Create()
         {
-            
+            var currUser = new CurrentAdmin();
+            if (CurrentAdmin.id == 0)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             return View();
         }
 
@@ -56,7 +64,7 @@ namespace Car_Rental.Controllers
         [HttpPost]
         public void Create(int customers_ID)
         {
-
+            
 
             Random r = new Random();
             int rInt = r.Next(0, 25);
@@ -69,97 +77,7 @@ namespace Car_Rental.Controllers
             };
         }
 
-            // GET: Card/Edit/5
-            public async Task<IActionResult> Edit(int? id)
-        {
-            
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var card = await _context.Cards.FindAsync(id);
-            if (card == null)
-            {
-                return NotFound();
-            }
-            return View(card);
-        }
-
-        // POST: Card/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Cards_ID,Customers_ID,Cashback,Points,Payment")] Card card)
-        {
-            
-            if (id != card.Cards_ID)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(card);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CardExists(card.Cards_ID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(card);
-        }
-
-        // GET: Card/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var card = await _context.Cards
-                .FirstOrDefaultAsync(m => m.Cards_ID == id);
-            if (card == null)
-            {
-                return NotFound();
-            }
-
-            return View(card);
-        }
-
-        // POST: Card/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            
-            var card = await _context.Cards.FindAsync(id);
-            if (card != null)
-            {
-                _context.Cards.Remove(card);
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool CardExists(int id)
-        {
-            return _context.Cards.Any(e => e.Cards_ID == id);
-        }
+        
+       
     }
 }

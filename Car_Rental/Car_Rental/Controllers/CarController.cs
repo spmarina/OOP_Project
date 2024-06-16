@@ -22,7 +22,11 @@ namespace Car_Rental.Controllers
         // GET: Car
         public async Task<IActionResult> Index()
         {
-            
+            var currUser = new CurrentAdmin();
+            if (CurrentAdmin.id == 0)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             return View(await _context.Cars.ToListAsync());
 
 
@@ -32,27 +36,15 @@ namespace Car_Rental.Controllers
         [HttpGet]
         public IActionResult Calendar()
         {
+            var currUser = new CurrentAdmin();
+            if (CurrentAdmin.id == 0)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             return View();
         }
 
-        // GET: Car/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var car = await _context.Cars
-                .FirstOrDefaultAsync(m => m.Cars_ID == id);
-            if (car == null)
-            {
-                return NotFound();
-            }
-
-            return View(car);
-        }
+       
         public IActionResult Error()
         {
             return View();
@@ -61,7 +53,11 @@ namespace Car_Rental.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            
+            var currUser = new CurrentAdmin();
+            if (CurrentAdmin.id == 0)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             return View();
         }
 
@@ -69,7 +65,11 @@ namespace Car_Rental.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(string brand, string model, decimal price, bool availability)
         {
-            
+            var currUser = new CurrentAdmin();
+            if (CurrentAdmin.id == 0)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             var CreateCar = new Car
             {
                 Brand = brand,
@@ -129,95 +129,6 @@ namespace Car_Rental.Controllers
         }
 
 
-        // GET: Car/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var car = await _context.Cars.FindAsync(id);
-            if (car == null)
-            {
-                return NotFound();
-            }
-            return View(car);
-        }
-
-        // POST: Car/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Cars_ID,Brand,Model,Price,Availability")] Car car)
-        {
-            
-            if (id != car.Cars_ID)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(car);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CarExists(car.Cars_ID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(car);
-        }
-
-        // GET: Car/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-           
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var car = await _context.Cars
-                .FirstOrDefaultAsync(m => m.Cars_ID == id);
-            if (car == null)
-            {
-                return NotFound();
-            }
-
-            return View(car);
-        }
-
-        // POST: Car/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var car = await _context.Cars.FindAsync(id);
-            if (car != null)
-            {
-                _context.Cars.Remove(car);
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool CarExists(int id)
-        {
-            
-            return _context.Cars.Any(e => e.Cars_ID == id);
-        }
+        
     }
 }

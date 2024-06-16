@@ -15,21 +15,25 @@ namespace Car_Rental.Controllers
         // GET: MenuController
         public async Task<IActionResult> Index()
         {
+            var currUser = new CurrentAdmin();
+            if (CurrentAdmin.id == 0)
+            {
+                return RedirectToAction("Index","Admin");
+            }
             return View();
         }
         public ActionResult Customers()
         {
+           
             return View();
         }
 
-        // GET: MenuController/Details/5
         public ActionResult Car()
         {
             
             return View();
         }
 
-        // GET: MenuController/Create
         public ActionResult Rent()
         {
             
@@ -48,68 +52,26 @@ namespace Car_Rental.Controllers
         }
         public ActionResult Contract()
         {
-            
             return View();
         }
         public ActionResult HRMenu()
         {
-            return View();
-        }
-        // POST: MenuController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
+            var currUser = new CurrentAdmin();
+            if (CurrentAdmin.id == 0)
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Admin");
             }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: MenuController/Edit/5
-        public ActionResult Edit(int id)
-        {
             return View();
         }
 
-        // POST: MenuController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Logout()
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+            // Вызываем метод SignOutAsync для очистки аутентификационных кук
+            //await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
-        // GET: MenuController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: MenuController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            // Перенаправляем пользователя на главную страницу или на другую страницу
+            CurrentAdmin.id = 0;
+            return RedirectToAction("Login", "Admin");
         }
     }
 }

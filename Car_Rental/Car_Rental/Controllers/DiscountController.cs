@@ -22,30 +22,23 @@ namespace Car_Rental.Controllers
         // GET: Discount
         public async Task<IActionResult> Index()
         {
+            var currUser = new CurrentAdmin();
+            if (CurrentAdmin.id == 0)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             return View(await _context.Discounts.ToListAsync());
         }
 
-        // GET: Discount/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var discount = await _context.Discounts
-                .FirstOrDefaultAsync(m => m.Discounts_ID == id);
-            if (discount == null)
-            {
-                return NotFound();
-            }
-
-            return View(discount);
-        }
-
+        
         // GET: Discount/Create
         public IActionResult Create()
         {
+            var currUser = new CurrentAdmin();
+            if (CurrentAdmin.id == 0)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             return View();
         }
 
@@ -53,6 +46,11 @@ namespace Car_Rental.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(int cars_ID,byte new_price)
         {
+            var currUser = new CurrentAdmin();
+            if (CurrentAdmin.id == 0)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
             var createDiscount = new Discount
             {
                 Cars_ID = cars_ID,
@@ -86,76 +84,25 @@ namespace Car_Rental.Controllers
         {
             return View();
         }
-        // GET: Discount/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var discount = await _context.Discounts.FindAsync(id);
-            if (discount == null)
-            {
-                return NotFound();
-            }
-            return View(discount);
-        }
-
-        // POST: Discount/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Discounts_ID,Cars_ID,NewPrice")] Discount discount)
-        {
-            if (id != discount.Discounts_ID)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(discount);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!DiscountExists(discount.Discounts_ID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(discount);
-        }
-
+        
         // GET: Discount/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
-                return NotFound();
+                return NotFound();//Ошибка что не найдена
             }
 
             var discount = await _context.Discounts
                 .FirstOrDefaultAsync(m => m.Discounts_ID == id);
             if (discount == null)
             {
-                return NotFound();
+                return NotFound();//Ошибка что не найдена
             }
 
             return View(discount);
         }
 
-        // POST: Discount/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -165,14 +112,14 @@ namespace Car_Rental.Controllers
             {
                 _context.Discounts.Remove(discount);
             }
+            else
+            {
+                return NotFound();//Ошибка что не найдена
+            }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index","Discount");
         }
 
-        private bool DiscountExists(int id)
-        {
-            return _context.Discounts.Any(e => e.Discounts_ID == id);
-        }
     }
 }

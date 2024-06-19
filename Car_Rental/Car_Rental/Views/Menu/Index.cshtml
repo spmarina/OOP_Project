@@ -21,6 +21,24 @@
             margin: 0;
         }
 
+        .create-button {
+            text-align: center;
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #454142;
+            color: white;
+            border-radius: 5px;
+            margin-top:20px;
+            margin-bottom: 20px;
+            text-decoration: none;
+            position:absolute;
+            font-size:2vw;
+            right:5%;
+            top: 2%;
+            width:100px;
+            height: 40px;   
+        }
+
         .container {
             background-color: white;
             padding: 20px;
@@ -48,6 +66,7 @@
     </style>
 </head>
 <body>
+    <a class =" create-button" href="@Url.Action("Logout", "Menu")">Выйти</a>
     <div class="container">
         <h2>Выберите функцию</h2>
         <a href="@Url.Action("Index", "Order")" class="option">Создать заказ</a>

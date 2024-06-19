@@ -57,7 +57,7 @@ namespace Car_Rental.Controllers
         public ActionResult HRMenu()
         {
             var currUser = new CurrentAdmin();
-            if (CurrentAdmin.id != 1)
+            if (CurrentAdmin.id != 4)
             {
                 return RedirectToAction("Index", "Admin");
             }
@@ -71,7 +71,7 @@ namespace Car_Rental.Controllers
 
             // Перенаправляем пользователя на главную страницу или на другую страницу
             CurrentAdmin.id = 0;
-            return RedirectToAction("Login", "Admin");
+            return RedirectToAction("Index", "Admin");
         }
     }
 }

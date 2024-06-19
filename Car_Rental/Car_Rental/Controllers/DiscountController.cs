@@ -57,6 +57,10 @@ namespace Car_Rental.Controllers
                 NewPrice=new_price,
 
             };
+            if (new_price <= 0 || new_price > 25)
+            {
+                return RedirectToAction("Error", "Discount");
+            }
             var checkcar = await _context.Cars.FirstOrDefaultAsync(x => x.Cars_ID == cars_ID);
             if(checkcar == null)
             {

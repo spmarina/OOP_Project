@@ -58,6 +58,11 @@ namespace Car_Rental.Controllers
                 Phone = phone,
                 ActiveRent = activeRent
             };
+            var checkPhone=_context.Customers.FirstOrDefault(_context => _context.Phone == phone);
+            if (checkPhone != null)
+            {
+                return RedirectToAction("Error", "Customers");
+            }
             char[] arr;
             //Проверка фамилии
             arr = lastName.ToCharArray();

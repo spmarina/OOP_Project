@@ -118,6 +118,8 @@ namespace Car_Rental.Controllers
                     await _context.SaveChangesAsync();
                 }
             }
+            userCust.ActiveRent = true;
+            await _context.SaveChangesAsync();
             //Проверка на машину
             var userCar=_context.Cars.FirstOrDefault(c=>c.Cars_ID==car_ID);
             if(userCar == null)
@@ -179,6 +181,14 @@ namespace Car_Rental.Controllers
             }
             int days =  (lastDate.Month*30 +lastDate.Day)-(thisDay.Month*30+thisDay.Day);
             userAdmin.Sales += ((int)userCar.Price - discountCar)*days;
+            await _context.SaveChangesAsync();
+            //Добавление суммы покупки в карту пользователя
+            var userCard= _context.Cards.FirstOrDefault(d => d.Customers_ID == userCust.Customers_ID);
+            if(userCard != null)
+            {
+                userCard.Payment += (long)userAdmin.Sales;
+                userCard.Points += (long)userCard.Payment*userCard.Cashback/1000;
+            }
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index", "Menu");

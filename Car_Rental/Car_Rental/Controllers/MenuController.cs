@@ -57,7 +57,7 @@ namespace Car_Rental.Controllers
         public ActionResult HRMenu()
         {
             var currUser = new CurrentAdmin();
-            if (CurrentAdmin.id == 0)
+            if (CurrentAdmin.id != 1)
             {
                 return RedirectToAction("Index", "Admin");
             }
